@@ -3,7 +3,7 @@
     <div class="row mt-5">
         <div class="col-lg-4">
             <div class="card">
-                <h2 class="card-header">Permohonan</h2>
+                <h2 class="card-header">Permohonan dari {{currentClient}}</h2>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-8">
@@ -189,7 +189,46 @@
                             <input #kod class="form-control" type="number"><br>
                         </div>
                     </div>
-                
+                    <div class="row">
+                        <div class="col-8">
+                            <label>Bijoue bottle</label>
+                        </div>
+                        <div class="col-4">
+                            <input #kod class="form-control" type="number"><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <label>Glass slides</label>
+                        </div>
+                        <div class="col-4">
+                            <input #kod class="form-control" type="number"><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <label>Microscope Slide</label>
+                        </div>
+                        <div class="col-4">
+                            <input #kod class="form-control" type="number"><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <label>Plain tube with red stopper</label>
+                        </div>
+                        <div class="col-4">
+                            <input #kod class="form-control" type="number"><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <label>Sodium Heparin tube</label>
+                        </div>
+                        <div class="col-4">
+                            <input #kod class="form-control" type="number"><br>
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -203,7 +242,7 @@
             </div>
         </div> -->
     </div>
-    <div class="row">
+    <div class="row mb-5">
         <div class="col-12">
             <button (click)="addItem(kod.value)" class="btn btn-primary mt-3">Hantar</button>
         </div>

@@ -9,11 +9,15 @@
             <div class="card">
                 <h2 class="card-header">Login</h2>
                 <div class="card-body">
-                    <label>Username: </label>
-                    <input class="form-control" type="text"><br>
-                    <label>Password: </label>
-                    <input class="form-control" type="password"><br>
+                    <label >Username:   </label>
+                    <input class="form-control" type="text" #titleInput><br>
+                    <label>Password:   </label>
+                    <input class="form-control" type="password" #titleInput2><br>
+                    <button (click)="verify(titleInput.value, titleInput2.value)" class="btn btn-primary btn-block mt-2">
+                        Login
+                    </button>
                 </div>
+                
             </div>
         </div>
     </div>

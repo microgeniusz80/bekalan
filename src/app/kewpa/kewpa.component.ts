@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-kewpa',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KewpaComponent implements OnInit {
   listItem:any = [];
+  currentClient:string = 'none'
 
   ngOnInit(): void {
-    
+    console.log('data: ', environment.ward)
+    this.currentClient = environment.ward;
   }
 
   addItem(kod:any){

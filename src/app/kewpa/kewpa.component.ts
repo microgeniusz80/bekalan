@@ -15,9 +15,82 @@ export class KewpaComponent implements OnInit {
     this.currentClient = environment.ward;
   }
 
-  addItem(kod:any){
-    this.listItem.push(kod)
+  addItem(
+    kod1:any, 
+    kod2:any,
+    kod3:any,
+    kod4:any,
+    kod5:any,
+    kod6:any,
+    kod7:any,
+    kod8:any,
+    kod9:any,
+    kod10:any,
+    kod11:any,
+    kod12:any,
+    kod13:any,
+    kod14:any,
+    kod15:any,
+    kod16:any,
+    kod17:any,
+    kod18:any,
+    kod19:any,
+    kod20:any,
+    kod21:any,
+    kod22:any,
+    kod23:any,
+    kod24:any,
+    kod25:any,
+    kod26:any,
+    kod27:any,
+    kod28:any,
+  ){
+    //this.listItem.push(kod)
     console.log(this.listItem)
+    
+      fetch('https://tricky-scratch-parcel.glitch.me',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify(
+          {
+            num1:kod1, 
+            num2:kod2,
+            num3:kod3,
+            num4:kod4,
+            num5:kod5,
+            num6:kod6,
+            num7:kod7,
+            num8:kod8,
+            num9:kod9,
+            num10:kod10,
+            num11:kod11,
+            num12:kod12,
+            num13:kod13,
+            num14:kod14,
+            num15:kod15,
+            num16:kod16,
+            num17:kod17,
+            num18:kod18,
+            num19:kod19,
+            num20:kod20,
+            num21:kod21,
+            num22:kod22,
+            num23:kod23,
+            num24:kod24,
+            num25:kod25,
+            num26:kod26,
+            num27:kod27,
+            num28:kod28,
+            ward:this.currentClient
+          }
+        )
+      })
+      .then(response => response.text())
+      .then(data=>console.log('the data is', JSON. stringify(data)))
+      .catch(error=>console.error('the error is: ', error))
+    
   }
 
 }

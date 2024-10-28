@@ -9,14 +9,15 @@ import { environment } from 'src/environments/environment';
 })
 export class LoginComponent implements OnInit {
 
-  
   constructor(private router:Router){}
 
   ngOnInit(): void {
     console.log('data: ', environment.ward)
+    fetch('https://tricky-scratch-parcel.glitch.me')
+    .then(response => response.text())
+    .then(data=>console.log(data))
+    .catch(error=>console.error('the error is: ', error))
   }
-
-  
 
   verify(user:string, password:string){
     if(user == 'wd1' && password == '123'){

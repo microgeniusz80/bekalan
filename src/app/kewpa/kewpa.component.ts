@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 export class KewpaComponent implements OnInit {
   listItem:any = [];
   currentClient:string = 'none'
+  serverReply:string = 'none'
 
   ngOnInit(): void {
     console.log('data: ', environment.ward)
@@ -88,8 +89,22 @@ export class KewpaComponent implements OnInit {
         )
       })
       .then(response => response.text())
-      .then(data=>console.log('the data is', JSON. stringify(data)))
-      .catch(error=>console.error('the error is: ', error))
+      .then((data)=>{
+        console.log('the data is', JSON.stringify(data))
+        console.log('why: ',JSON.stringify(data))
+        var status = data.toString();
+        if(status === 'OK'){
+          this.serverReply = 'Data is sent sucessfully!'
+          console.log('im in here')
+        } else {
+          this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
+        }
+        console.log('after: ', status)
+      })
+      .catch((error)=>{
+        console.error('the error is: ', error);
+        this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
+      })
     
   }
 

@@ -1,3 +1,8 @@
+<div>
+    <button (click)="check()" class="btn btn-primary">Check</button>
+    <button (click)="checkTrue()" class="btn btn-danger">Make it true</button>
+    <button (click)="checkFalse()" class="btn btn-danger">Make it false</button>
+</div>
 <div [hidden]="!checkServer" class="container mt-5">
     <h1>{{entryStatus}}</h1>
 </div>

@@ -44,6 +44,98 @@ export class KewpaComponent implements OnInit {
         .catch(error=>console.error('the error is: ', error)) 
   }
 
+  check(){
+    fetch('https://tricky-scratch-parcel.glitch.me/readcheck',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(
+        {
+          ward:this.currentClient
+        }
+      )
+    })
+    .then(response => response.text())
+    .then((data)=>{
+      console.log('checkfileld', JSON.stringify(data))
+      console.log('why: ',JSON.stringify(data))
+      var status = data[3].toString();
+      if(status === 'd'){
+        console.log('Request for this month already done')
+        this.entryStatus = 'Request for this month already done.'
+      } else {
+        this.checkServer = false;
+      }
+    })
+    .catch((error)=>{
+      console.error('the error is: ', error);
+      this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
+    })
+  }
+
+  checkTrue(){
+    fetch('https://tricky-scratch-parcel.glitch.me/updatecheck',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(
+        {
+          ward:this.currentClient,
+          completed:'TRUE'
+        }
+      )
+    })
+    .then(response => response.text())
+    .then((data)=>{
+      console.log('checkfileld', JSON.stringify(data))
+      console.log('why: ',JSON.stringify(data))
+      var status = data[3].toString();
+      if(status === 'd'){
+        console.log('Request for this month already done')
+        this.entryStatus = 'Request for this month already done.'
+      } else {
+        this.checkServer = false;
+      }
+    })
+    .catch((error)=>{
+      console.error('the error is: ', error);
+      this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
+    })
+  }
+
+  checkFalse(){
+    fetch('https://tricky-scratch-parcel.glitch.me/updatecheck',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(
+        {
+          ward:this.currentClient,
+          completed:'FALSE'
+        }
+      )
+    })
+    .then(response => response.text())
+    .then((data)=>{
+      console.log('checkfileld', JSON.stringify(data))
+      console.log('why: ',JSON.stringify(data))
+      var status = data[3].toString();
+      if(status === 'd'){
+        console.log('Request for this month already done')
+        this.entryStatus = 'Request for this month already done.'
+      } else {
+        this.checkServer = false;
+      }
+    })
+    .catch((error)=>{
+      console.error('the error is: ', error);
+      this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
+    })
+  }
+
   checkAlreadyFilled(){
     fetch('https://tricky-scratch-parcel.glitch.me/check',{
       method:'POST',

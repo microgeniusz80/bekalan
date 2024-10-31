@@ -10,10 +10,69 @@ export class KewpaComponent implements OnInit {
   listItem:any = [];
   currentClient:string = 'none'
   serverReply:string = 'none'
+  checkServer:boolean = true;
+  interval:any;
+  entryStatus:string = 'Please wait for few seconds! Server is starting!'
 
   ngOnInit(): void {
     console.log('data: ', environment.ward)
     this.currentClient = environment.ward;
+    this.interval = setInterval(() => {
+      this.text(); 
+    }, 4000);
+    console.log('the interval: ', this.interval)
+    
+  }
+
+  ngOnDestroy() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+  }
+
+  text(){
+    fetch('https://tricky-scratch-parcel.glitch.me')
+        .then(response => response.text())
+        .then((data)=>{
+          console.log('server reply from kewpa page: ',data)
+          if(data == 'server is up!'){
+            clearInterval(this.interval);
+            this.checkAlreadyFilled();
+            
+          }
+        })
+        .catch(error=>console.error('the error is: ', error)) 
+  }
+
+  checkAlreadyFilled(){
+    fetch('https://tricky-scratch-parcel.glitch.me/check',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(
+        {
+          ward:this.currentClient
+        }
+      )
+    })
+    .then(response => response.text())
+    .then((data)=>{
+      console.log('checkfileld', JSON.stringify(data))
+      console.log('why: ',JSON.stringify(data))
+      var status = data[3].toString();
+      if(status === 'd'){
+        console.log('Request for this month already done')
+        this.entryStatus = 'Request for this month already done.'
+      } else {
+        this.checkServer = false;
+      }
+    })
+    .catch((error)=>{
+      console.error('the error is: ', error);
+      this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
+    })
+    
   }
 
   addItem(

@@ -13,6 +13,7 @@ export class KewpaComponent implements OnInit {
   checkServer:boolean = true;
   interval:any;
   entryStatus:string = 'Please wait for few seconds! Server is starting!'
+  currentRecord:any = [];
 
   ngOnInit(): void {
     console.log('data: ', environment.ward)
@@ -182,12 +183,11 @@ export class KewpaComponent implements OnInit {
     })
     .then(response => response.text())
     .then((data)=>{
-      console.log('original form: ', data)
-      console.log('separating: ', data[0])
-      console.log('checkfileld', JSON.stringify(data))
-      console.log('why: ',JSON.stringify(data))
-      var newData = JSON.stringify(data)
-      console.log('newdata: ', newData[0])
+      console.log('original response', data)
+      console.log('parsing: ', (JSON.parse(data))[0][0])
+      const returnedData = JSON.parse(data);
+      console.log('the length: ', returnedData[0][2])
+      console.log('why no response')
       // if(status === 'd'){
       //   console.log('Request for this month already done')
       //   this.entryStatus = 'Request for this month already done. Loading data...'

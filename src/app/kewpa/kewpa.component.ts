@@ -63,7 +63,7 @@ export class KewpaComponent implements OnInit {
       var status = data[3].toString();
       if(status === 'd'){
         console.log('Request for this month already done')
-        this.entryStatus = 'Request for this month already done.'
+        this.entryStatus = 'Request for this month already done. Loading data...'
       } else {
         this.checkServer = false;
       }
@@ -155,7 +155,8 @@ export class KewpaComponent implements OnInit {
       var status = data[3].toString();
       if(status === 'd'){
         console.log('Request for this month already done')
-        this.entryStatus = 'Request for this month already done.'
+        this.entryStatus = 'Request for this month already done. Loading data...'
+        this.loadEnteredData();
       } else {
         this.checkServer = false;
       }
@@ -165,6 +166,40 @@ export class KewpaComponent implements OnInit {
       this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
     })
     
+  }
+
+  loadEnteredData(){
+    fetch('https://tricky-scratch-parcel.glitch.me/retrieve',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(
+        {
+          ward:this.currentClient
+        }
+      )
+    })
+    .then(response => response.text())
+    .then((data)=>{
+      console.log('original form: ', data)
+      console.log('separating: ', data[0])
+      console.log('checkfileld', JSON.stringify(data))
+      console.log('why: ',JSON.stringify(data))
+      var newData = JSON.stringify(data)
+      console.log('newdata: ', newData[0])
+      // if(status === 'd'){
+      //   console.log('Request for this month already done')
+      //   this.entryStatus = 'Request for this month already done. Loading data...'
+      //   this.loadEnteredData();
+      // } else {
+      //   this.checkServer = false;
+      // }
+    })
+    .catch((error)=>{
+      console.error('the error is: ', error);
+      this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
+    })
   }
 
   addItem(

@@ -186,8 +186,35 @@ export class KewpaComponent implements OnInit {
       console.log('original response', data)
       console.log('parsing: ', (JSON.parse(data))[0][0])
       const returnedData = JSON.parse(data);
-      console.log('the length: ', returnedData[0][2])
+      console.log('the length: ', returnedData[0].length)
       console.log('why no response')
+
+      let my_object = {}; 
+      let colum_criteria = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56];
+      let description = ['BIOHAZ BAG','GEL TUBE','EDTA TUBE','GLUC TUBE','COAG TUBE','URINE CONT','PAEDS GEL', 'PAEDS FBC', 'PAEDS EDTA', 'STOOL CONT', 'SWAB - AMIES (GEL)', 'SWAB - CARRY BLAIR', 'ESR TUBE', '24 HRS URINE CONTAINER (BOX)', 'C&S AEROBIC', 'C&S ANAEROBIC', 'C&S PAEDS', 'C&S FUNGAL', 'LITHIUM HEP TUBE', 'G6PD PAPER', 'BLOOD SPOT PAPER', 'FOAM BOX', 'PARAFILM', 'BIJOUE BOTTLE', 'GLASS SLIDES', 'MICROSCOPE SLIDE', 'PLAIN TUBE + RED STOPER', 'SODIUM HEP TUBE'];
+
+      colum_criteria.forEach((data, index)=>{
+        console.log('the number: ', returnedData[0][data])
+        console.log('the index: ', index)
+        if(returnedData[0][data] == '' || returnedData[0][data] == null){
+          console.log('not valid number')
+        } else {
+          console.log('ada data ni')
+          this.currentRecord.push(
+            {
+              items:description[index],
+              value:returnedData[0][data]
+            }
+          )
+        }
+        this.entryStatus = ''
+        console.log('the array contains: ', this.currentRecord)
+      })
+
+
+      for (let i = 0; i < returnedData[0].length; i++) {
+        console.log('cell data: ',returnedData[0][i]);
+      }
       // if(status === 'd'){
       //   console.log('Request for this month already done')
       //   this.entryStatus = 'Request for this month already done. Loading data...'

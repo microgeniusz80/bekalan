@@ -1,30 +1,28 @@
-<div>
+<!-- <div>
     <button (click)="check()" class="btn btn-primary">Check</button>
     <button (click)="checkTrue()" class="btn btn-danger">Make it true</button>
     <button (click)="checkFalse()" class="btn btn-danger">Make it false</button>
-</div>
+</div> -->
 <div [hidden]="!checkServer" class="container mt-5">
     <h1>{{entryStatus}}</h1>
 </div>
 <div>
-    <!-- <table class="table">
+    <table class="table">
         <thead>
             <tr>
                 <th>No.</th>
-                <th>IC</th>
-                <th>Status</th>
-                <th>Action</th>
+                <th>Items</th>
+                <th>count</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let data of userArray; let i = index">
+            <tr *ngFor="let data of currentRecord; let i = index">
                 <td>{{i + 1}}</td>
-                <td>{{data.email}}</td>
-                <td>{{data.approval}}</td>
-                
+                <td>{{data.items}}</td>
+                <td>{{data.value}}</td>
             </tr>
         </tbody>
-    </table> -->
+    </table>
 </div>
 <div [hidden]="checkServer" class="container mt-5">
     <h2>BORANG PERMOHONAN STOK (INDIVIDU KEPADA STOR)</h2>

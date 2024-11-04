@@ -14,6 +14,7 @@ export class KewpaComponent implements OnInit {
   interval:any;
   entryStatus:string = 'Please wait for few seconds! Server is starting!'
   currentRecord:any = [];
+  hideTable:boolean = true;
 
   ngOnInit(): void {
     console.log('data: ', environment.ward)
@@ -209,6 +210,7 @@ export class KewpaComponent implements OnInit {
         }
         this.entryStatus = ''
         console.log('the array contains: ', this.currentRecord)
+        this.hideTable = false;
       })
 
 

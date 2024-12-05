@@ -31,6 +31,13 @@ export class KewpaComponent implements OnInit {
   selectedValue7: any="";
   selectedValue8: any="";
   selectedValue9: any="";
+  selectedValue10: any="";
+  selectedValue11: any="";
+  selectedValue12: any="";
+
+  qn1:any=null;
+
+  alertcontent:string='Stock detail already exist';
 
   entry = {
     "data":[
@@ -145,10 +152,17 @@ export class KewpaComponent implements OnInit {
     if(test){
       test = false
       newValue.value = null
-      alert('repeated')
+      alert('Stock detail already exist')
     } else {
       this.entry.data[0].data = newValue.value;
+      if(newValue.value == ''){
+        this.qn1 = ''
+      }
+
+      this.entry.data[0].value = this.qn1;
     }
+
+    console.log('final data: ', this.entry.data)
   }
 
   onChange2(newValue: any){
@@ -156,7 +170,9 @@ export class KewpaComponent implements OnInit {
     
 
     this.entry.data.forEach((entry, index) => {
+      
       if(entry.data !== ''){
+        console.log('compare value: ', entry.data, ', ',newValue.value)
         if(entry.data == newValue.value){
           test = true
         }
@@ -166,12 +182,14 @@ export class KewpaComponent implements OnInit {
     if(test){
       test = false
       
-      alert('repeated')
+      alert('Stock detail already exist')
       //this.selectedValue2 = null
       newValue.value = null
     } else {
       this.entry.data[1].data = newValue.value;
     }
+
+    console.log('final data: ', this.entry.data)
   }
 
   onChange3(newValue: any){
@@ -189,10 +207,12 @@ export class KewpaComponent implements OnInit {
     if(test){
       test = false
       newValue.value = null
-      alert('repeated')
+      alert('Stock detail already exist')
     } else {
       this.entry.data[2].data = newValue.value;
     }
+
+    console.log('final data: ', this.entry.data)
   }
 
   onChange4(newValue: any){
@@ -210,10 +230,12 @@ export class KewpaComponent implements OnInit {
     if(test){
       test = false
       newValue.value = null
-      alert('repeated')
+      alert('Stock detail already exist')
     } else {
       this.entry.data[3].data = newValue.value;
     }
+
+    console.log('final data: ', this.entry.data)
   }
 
   onChange5(newValue: any){
@@ -231,10 +253,173 @@ export class KewpaComponent implements OnInit {
     if(test){
       test = false
       newValue.value = null
-      alert('repeated')
+      alert('Stock detail already exist')
     } else {
       this.entry.data[4].data = newValue.value;
     }
+
+    console.log('final data: ', this.entry.data)
+  }
+
+  onChange6(newValue: any){
+    var test = false
+    
+
+    this.entry.data.forEach((entry, index) => {
+      if(entry.data !== ''){
+        if(entry.data == newValue.value){
+          test = true
+        }
+      }
+    })
+
+    if(test){
+      test = false
+      newValue.value = null
+      alert('Stock detail already exist')
+    } else {
+      this.entry.data[5].data = newValue.value;
+    }
+
+    console.log('final data: ', this.entry.data)
+  }
+
+  onChange7(newValue: any){
+    var test = false
+    
+
+    this.entry.data.forEach((entry, index) => {
+      if(entry.data !== ''){
+        if(entry.data == newValue.value){
+          test = true
+        }
+      }
+    })
+
+    if(test){
+      test = false
+      newValue.value = null
+      alert('Stock detail already exist')
+    } else {
+      this.entry.data[6].data = newValue.value;
+    }
+
+    console.log('final data: ', this.entry.data)
+  }
+
+  onChange8(newValue: any){
+    var test = false
+    
+
+    this.entry.data.forEach((entry, index) => {
+      if(entry.data !== ''){
+        if(entry.data == newValue.value){
+          test = true
+        }
+      }
+    })
+
+    if(test){
+      test = false
+      newValue.value = null
+      alert('Stock detail already exist')
+    } else {
+      this.entry.data[7].data = newValue.value;
+    }
+
+    console.log('final data: ', this.entry.data)
+  }
+
+  onChange9(newValue: any){
+    var test = false
+    
+
+    this.entry.data.forEach((entry, index) => {
+      if(entry.data !== ''){
+        if(entry.data == newValue.value){
+          test = true
+        }
+      }
+    })
+
+    if(test){
+      test = false
+      newValue.value = null
+      alert('Stock detail already exist')
+    } else {
+      this.entry.data[8].data = newValue.value;
+    }
+
+    console.log('final data: ', this.entry.data)
+  }
+
+  onChange10(newValue: any){
+    var test = false
+    
+
+    this.entry.data.forEach((entry, index) => {
+      if(entry.data !== ''){
+        if(entry.data == newValue.value){
+          test = true
+        }
+      }
+    })
+
+    if(test){
+      test = false
+      newValue.value = null
+      alert('Stock detail already exist')
+    } else {
+      this.entry.data[9].data = newValue.value;
+    }
+
+    console.log('final data: ', this.entry.data)
+  }
+
+  onChange11(newValue: any){
+    var test = false
+    
+
+    this.entry.data.forEach((entry, index) => {
+      if(entry.data !== ''){
+        if(entry.data == newValue.value){
+          test = true
+        }
+      }
+    })
+
+    if(test){
+      test = false
+      newValue.value = null
+      alert('Stock detail already exist')
+    } else {
+      this.entry.data[10].data = newValue.value;
+    }
+
+    console.log('final data: ', this.entry.data)
+  }
+
+  onChange12(newValue: any){
+    var test = false
+    
+
+    this.entry.data.forEach((entry, index) => {
+      if(entry.data !== ''){
+        if(entry.data == newValue.value){
+          test = true
+        }
+      }
+    })
+
+    if(test){
+      test = false
+      newValue.value = null
+      alert('Stock detail already exist')
+    } else {
+      this.entry.data[11].data = newValue.value;
+    }
+
+    console.log('final data: ', this.entry.data)
   }
 
   ngOnDestroy() {

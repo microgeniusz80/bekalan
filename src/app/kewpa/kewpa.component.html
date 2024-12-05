@@ -10,93 +10,404 @@
     <h2>KEWPA Form</h2>
     <div class="wrap">
         <canvas class="d-flex align-items-center" #canvas width="1339" height="948"></canvas>
-        <input id="q1"/>
-        <input id="q2"/>
-        <input id="q3"/>
-        <input id="q4"/>
-        <input id="q5"/>
-        <input id="q6"/>
-        <input id="q7"/>
-        <input id="q8"/>
-        <input id="q9"/>
-        <input id="q10"/>
-        <input id="q11"/>
-        <input id="q12"/>
+        <input type="number" id="q1" [(ngModel)]="qn1"/>
+        <input type="number" id="q2"/>
+        <input type="number" id="q3"/>
+        <input type="number" id="q4"/>
+        <input type="number" id="q5"/>
+        <input type="number" id="q6"/>
+        <input type="number" id="q7"/>
+        <input type="number" id="q8"/>
+        <input type="number" id="q9"/>
+        <input type="number" id="q10"/>
+        <input type="number" id="q11"/>
+        <input type="number" id="q12"/>
 
         <button (click)="resetBox()" class="btn btn-primary" id="b1">Send</button>
         <button (click)="retrieveBox()" class="btn btn-primary" id="b2">Retrieve</button>
 
         <select [(ngModel)]="selectedValue1" (change)="onChange1($event.target)" name="cars" id="c1">
-            <option value="volvo"></option>
-            <option value="saab">Gel Tube</option>
-            <option value="opel">EDTA Tube</option>
-            <option value="audi">Gluc Tube</option>
+            <option value=""></option>
+            <option value="Biohazard_bag">Biohazard bag</option>
+            <option value="Gel_Tube">Gel Tube</option>
+            <option value="EDTA_Tube">EDTA Tube</option>
+            <option value="Gluc_Tube">Gluc Tube</option>
+            <option value="Coag_Tube">Coag Tube</option>
+            <option value="urine_container">urine container</option>
+            <option value="Paeds_Gel">Paeds Gel</option>
+            <option value="Paeds_FBC">Paeds FBC</option>
+            <option value="Paeds_EDTA">Paeds EDTA</option>
+            <option value="Stool_Container">Stool Container</option>
+            <option value="Swab_Amies_gel">Swab - Amies gel</option>
+            <option value="Swab_Carry_Blair">Swab - Carry Blair</option>
+            <option value="ESR_Tube">ESR Tube</option>
+            <option value="24h_urine_container_(BOX)">24h urine container (BOX)</option>
+            <option value="C&S_Aerobic">C&S Aerobic</option>
+            <option value="C&S_Anaerobic">C&S Anaerobic</option>
+            <option value="C&S_Peads">C&S Peads</option>
+            <option value="C&S_Fungal">C&S Fungal</option>
+            <option value="Lithium_Heparin_Tube">Lithium Heparin Tube</option>
+            <option value="G6PD_Paper">G6PD Paper</option>
+            <option value="Blood_Spot_Paper">Blood Spot Paper</option>
+            <option value="Foam_Box">Foam Box</option>
+            <option value="Parafilm">Parafilm</option>
+            <option value="Bijoue_bottle">Bijoue bottle</option>
+            <option value="Glass_slides">Glass slides</option>
+            <option value="Microscope_Slide">Microscope Slide</option>
+            <option value="Plain_tube_with_red_stopper">Plain tube with red stopper</option>
+            <option value="Sodium_Heparin_tube">Sodium Heparin tube</option>
         </select>
+
         <select [(ngModel)]="selectedValue2" (change)="onChange2($event.target)" name="choice2" id="c2">
-            <option value="volvo"></option>
-            <option value="saab">Gel Tube</option>
-            <option value="opel">EDTA Tube</option>
-            <option value="audi">Gluc Tube</option>
+            <option value=""></option>
+            <option value="Biohazard_bag">Biohazard bag</option>
+            <option value="Gel_Tube">Gel Tube</option>
+            <option value="EDTA_Tube">EDTA Tube</option>
+            <option value="Gluc_Tube">Gluc Tube</option>
+            <option value="Coag_Tube">Coag Tube</option>
+            <option value="urine_container">urine container</option>
+            <option value="Paeds_Gel">Paeds Gel</option>
+            <option value="Paeds_FBC">Paeds FBC</option>
+            <option value="Paeds_EDTA">Paeds EDTA</option>
+            <option value="Stool_Container">Stool Container</option>
+            <option value="Swab_Amies_gel">Swab - Amies gel</option>
+            <option value="Swab_Carry_Blair">Swab - Carry Blair</option>
+            <option value="ESR_Tube">ESR Tube</option>
+            <option value="24h_urine_container_(BOX)">24h urine container (BOX)</option>
+            <option value="C&S_Aerobic">C&S Aerobic</option>
+            <option value="C&S_Anaerobic">C&S Anaerobic</option>
+            <option value="C&S_Peads">C&S Peads</option>
+            <option value="C&S_Fungal">C&S Fungal</option>
+            <option value="Lithium_Heparin_Tube">Lithium Heparin Tube</option>
+            <option value="G6PD_Paper">G6PD Paper</option>
+            <option value="Blood_Spot_Paper">Blood Spot Paper</option>
+            <option value="Foam_Box">Foam Box</option>
+            <option value="Parafilm">Parafilm</option>
+            <option value="Bijoue_bottle">Bijoue bottle</option>
+            <option value="Glass_slides">Glass slides</option>
+            <option value="Microscope_Slide">Microscope Slide</option>
+            <option value="Plain_tube_with_red_stopper">Plain tube with red stopper</option>
+            <option value="Sodium_Heparin_tube">Sodium Heparin tube</option>
         </select>
+
         <select [(ngModel)]="selectedValue3" (change)="onChange3($event.target)" name="choice2" id="c3">
-            <option value="volvo"></option>
-            <option value="saab">Gel Tube</option>
-            <option value="opel">EDTA Tube</option>
-            <option value="audi">Gluc Tube</option>
+            <option value=""></option>
+            <option value="Biohazard_bag">Biohazard bag</option>
+            <option value="Gel_Tube">Gel Tube</option>
+            <option value="EDTA_Tube">EDTA Tube</option>
+            <option value="Gluc_Tube">Gluc Tube</option>
+            <option value="Coag_Tube">Coag Tube</option>
+            <option value="urine_container">urine container</option>
+            <option value="Paeds_Gel">Paeds Gel</option>
+            <option value="Paeds_FBC">Paeds FBC</option>
+            <option value="Paeds_EDTA">Paeds EDTA</option>
+            <option value="Stool_Container">Stool Container</option>
+            <option value="Swab_Amies_gel">Swab - Amies gel</option>
+            <option value="Swab_Carry_Blair">Swab - Carry Blair</option>
+            <option value="ESR_Tube">ESR Tube</option>
+            <option value="24h_urine_container_(BOX)">24h urine container (BOX)</option>
+            <option value="C&S_Aerobic">C&S Aerobic</option>
+            <option value="C&S_Anaerobic">C&S Anaerobic</option>
+            <option value="C&S_Peads">C&S Peads</option>
+            <option value="C&S_Fungal">C&S Fungal</option>
+            <option value="Lithium_Heparin_Tube">Lithium Heparin Tube</option>
+            <option value="G6PD_Paper">G6PD Paper</option>
+            <option value="Blood_Spot_Paper">Blood Spot Paper</option>
+            <option value="Foam_Box">Foam Box</option>
+            <option value="Parafilm">Parafilm</option>
+            <option value="Bijoue_bottle">Bijoue bottle</option>
+            <option value="Glass_slides">Glass slides</option>
+            <option value="Microscope_Slide">Microscope Slide</option>
+            <option value="Plain_tube_with_red_stopper">Plain tube with red stopper</option>
+            <option value="Sodium_Heparin_tube">Sodium Heparin tube</option>
         </select>
+
         <select [(ngModel)]="selectedValue4" (change)="onChange4($event.target)" name="choice2" id="c4">
-            <option value="volvo"></option>
-            <option value="saab">Gel Tube</option>
-            <option value="opel">EDTA Tube</option>
-            <option value="audi">Gluc Tube</option>
+            <option value=""></option>
+            <option value="Biohazard_bag">Biohazard bag</option>
+            <option value="Gel_Tube">Gel Tube</option>
+            <option value="EDTA_Tube">EDTA Tube</option>
+            <option value="Gluc_Tube">Gluc Tube</option>
+            <option value="Coag_Tube">Coag Tube</option>
+            <option value="urine_container">urine container</option>
+            <option value="Paeds_Gel">Paeds Gel</option>
+            <option value="Paeds_FBC">Paeds FBC</option>
+            <option value="Paeds_EDTA">Paeds EDTA</option>
+            <option value="Stool_Container">Stool Container</option>
+            <option value="Swab_Amies_gel">Swab - Amies gel</option>
+            <option value="Swab_Carry_Blair">Swab - Carry Blair</option>
+            <option value="ESR_Tube">ESR Tube</option>
+            <option value="24h_urine_container_(BOX)">24h urine container (BOX)</option>
+            <option value="C&S_Aerobic">C&S Aerobic</option>
+            <option value="C&S_Anaerobic">C&S Anaerobic</option>
+            <option value="C&S_Peads">C&S Peads</option>
+            <option value="C&S_Fungal">C&S Fungal</option>
+            <option value="Lithium_Heparin_Tube">Lithium Heparin Tube</option>
+            <option value="G6PD_Paper">G6PD Paper</option>
+            <option value="Blood_Spot_Paper">Blood Spot Paper</option>
+            <option value="Foam_Box">Foam Box</option>
+            <option value="Parafilm">Parafilm</option>
+            <option value="Bijoue_bottle">Bijoue bottle</option>
+            <option value="Glass_slides">Glass slides</option>
+            <option value="Microscope_Slide">Microscope Slide</option>
+            <option value="Plain_tube_with_red_stopper">Plain tube with red stopper</option>
+            <option value="Sodium_Heparin_tube">Sodium Heparin tube</option>
         </select>
+
         <select [(ngModel)]="selectedValue5" (change)="onChange5($event.target)" name="choice2" id="c5">
-            <option value="volvo"></option>
-            <option value="saab">Gel Tube</option>
-            <option value="opel">EDTA Tube</option>
-            <option value="audi">Gluc Tube</option>
+            <option value=""></option>
+            <option value="Biohazard_bag">Biohazard bag</option>
+            <option value="Gel_Tube">Gel Tube</option>
+            <option value="EDTA_Tube">EDTA Tube</option>
+            <option value="Gluc_Tube">Gluc Tube</option>
+            <option value="Coag_Tube">Coag Tube</option>
+            <option value="urine_container">urine container</option>
+            <option value="Paeds_Gel">Paeds Gel</option>
+            <option value="Paeds_FBC">Paeds FBC</option>
+            <option value="Paeds_EDTA">Paeds EDTA</option>
+            <option value="Stool_Container">Stool Container</option>
+            <option value="Swab_Amies_gel">Swab - Amies gel</option>
+            <option value="Swab_Carry_Blair">Swab - Carry Blair</option>
+            <option value="ESR_Tube">ESR Tube</option>
+            <option value="24h_urine_container_(BOX)">24h urine container (BOX)</option>
+            <option value="C&S_Aerobic">C&S Aerobic</option>
+            <option value="C&S_Anaerobic">C&S Anaerobic</option>
+            <option value="C&S_Peads">C&S Peads</option>
+            <option value="C&S_Fungal">C&S Fungal</option>
+            <option value="Lithium_Heparin_Tube">Lithium Heparin Tube</option>
+            <option value="G6PD_Paper">G6PD Paper</option>
+            <option value="Blood_Spot_Paper">Blood Spot Paper</option>
+            <option value="Foam_Box">Foam Box</option>
+            <option value="Parafilm">Parafilm</option>
+            <option value="Bijoue_bottle">Bijoue bottle</option>
+            <option value="Glass_slides">Glass slides</option>
+            <option value="Microscope_Slide">Microscope Slide</option>
+            <option value="Plain_tube_with_red_stopper">Plain tube with red stopper</option>
+            <option value="Sodium_Heparin_tube">Sodium Heparin tube</option>
         </select>
-        <select [(ngModel)]="selectedValue6" name="choice2" id="c6">
-            <option value="volvo"></option>
-            <option value="saab">Gel Tube</option>
-            <option value="opel">EDTA Tube</option>
-            <option value="audi">Gluc Tube</option>
+
+        <select [(ngModel)]="selectedValue6" (change)="onChange6($event.target)" name="choice2" id="c6">
+            <option value=""></option>
+            <option value="Biohazard_bag">Biohazard bag</option>
+            <option value="Gel_Tube">Gel Tube</option>
+            <option value="EDTA_Tube">EDTA Tube</option>
+            <option value="Gluc_Tube">Gluc Tube</option>
+            <option value="Coag_Tube">Coag Tube</option>
+            <option value="urine_container">urine container</option>
+            <option value="Paeds_Gel">Paeds Gel</option>
+            <option value="Paeds_FBC">Paeds FBC</option>
+            <option value="Paeds_EDTA">Paeds EDTA</option>
+            <option value="Stool_Container">Stool Container</option>
+            <option value="Swab_Amies_gel">Swab - Amies gel</option>
+            <option value="Swab_Carry_Blair">Swab - Carry Blair</option>
+            <option value="ESR_Tube">ESR Tube</option>
+            <option value="24h_urine_container_(BOX)">24h urine container (BOX)</option>
+            <option value="C&S_Aerobic">C&S Aerobic</option>
+            <option value="C&S_Anaerobic">C&S Anaerobic</option>
+            <option value="C&S_Peads">C&S Peads</option>
+            <option value="C&S_Fungal">C&S Fungal</option>
+            <option value="Lithium_Heparin_Tube">Lithium Heparin Tube</option>
+            <option value="G6PD_Paper">G6PD Paper</option>
+            <option value="Blood_Spot_Paper">Blood Spot Paper</option>
+            <option value="Foam_Box">Foam Box</option>
+            <option value="Parafilm">Parafilm</option>
+            <option value="Bijoue_bottle">Bijoue bottle</option>
+            <option value="Glass_slides">Glass slides</option>
+            <option value="Microscope_Slide">Microscope Slide</option>
+            <option value="Plain_tube_with_red_stopper">Plain tube with red stopper</option>
+            <option value="Sodium_Heparin_tube">Sodium Heparin tube</option>
         </select>
-        <select [(ngModel)]="selectedValue7" name="choice2" id="c7">
-            <option value="volvo"></option>
-            <option value="saab">Gel Tube</option>
-            <option value="opel">EDTA Tube</option>
-            <option value="audi">Gluc Tube</option>
+
+        <select [(ngModel)]="selectedValue7" (change)="onChange7($event.target)" name="choice2" id="c7">
+            <option value=""></option>
+            <option value="Biohazard_bag">Biohazard bag</option>
+            <option value="Gel_Tube">Gel Tube</option>
+            <option value="EDTA_Tube">EDTA Tube</option>
+            <option value="Gluc_Tube">Gluc Tube</option>
+            <option value="Coag_Tube">Coag Tube</option>
+            <option value="urine_container">urine container</option>
+            <option value="Paeds_Gel">Paeds Gel</option>
+            <option value="Paeds_FBC">Paeds FBC</option>
+            <option value="Paeds_EDTA">Paeds EDTA</option>
+            <option value="Stool_Container">Stool Container</option>
+            <option value="Swab_Amies_gel">Swab - Amies gel</option>
+            <option value="Swab_Carry_Blair">Swab - Carry Blair</option>
+            <option value="ESR_Tube">ESR Tube</option>
+            <option value="24h_urine_container_(BOX)">24h urine container (BOX)</option>
+            <option value="C&S_Aerobic">C&S Aerobic</option>
+            <option value="C&S_Anaerobic">C&S Anaerobic</option>
+            <option value="C&S_Peads">C&S Peads</option>
+            <option value="C&S_Fungal">C&S Fungal</option>
+            <option value="Lithium_Heparin_Tube">Lithium Heparin Tube</option>
+            <option value="G6PD_Paper">G6PD Paper</option>
+            <option value="Blood_Spot_Paper">Blood Spot Paper</option>
+            <option value="Foam_Box">Foam Box</option>
+            <option value="Parafilm">Parafilm</option>
+            <option value="Bijoue_bottle">Bijoue bottle</option>
+            <option value="Glass_slides">Glass slides</option>
+            <option value="Microscope_Slide">Microscope Slide</option>
+            <option value="Plain_tube_with_red_stopper">Plain tube with red stopper</option>
+            <option value="Sodium_Heparin_tube">Sodium Heparin tube</option>
         </select>
-        <select [(ngModel)]="selectedValue8" name="choice2" id="c8">
-            <option value="volvo"></option>
-            <option value="saab">Gel Tube</option>
-            <option value="opel">EDTA Tube</option>
-            <option value="audi">Gluc Tube</option>
+
+        <select [(ngModel)]="selectedValue8" (change)="onChange8($event.target)" name="choice2" id="c8">
+            <option value=""></option>
+            <option value="Biohazard_bag">Biohazard bag</option>
+            <option value="Gel_Tube">Gel Tube</option>
+            <option value="EDTA_Tube">EDTA Tube</option>
+            <option value="Gluc_Tube">Gluc Tube</option>
+            <option value="Coag_Tube">Coag Tube</option>
+            <option value="urine_container">urine container</option>
+            <option value="Paeds_Gel">Paeds Gel</option>
+            <option value="Paeds_FBC">Paeds FBC</option>
+            <option value="Paeds_EDTA">Paeds EDTA</option>
+            <option value="Stool_Container">Stool Container</option>
+            <option value="Swab_Amies_gel">Swab - Amies gel</option>
+            <option value="Swab_Carry_Blair">Swab - Carry Blair</option>
+            <option value="ESR_Tube">ESR Tube</option>
+            <option value="24h_urine_container_(BOX)">24h urine container (BOX)</option>
+            <option value="C&S_Aerobic">C&S Aerobic</option>
+            <option value="C&S_Anaerobic">C&S Anaerobic</option>
+            <option value="C&S_Peads">C&S Peads</option>
+            <option value="C&S_Fungal">C&S Fungal</option>
+            <option value="Lithium_Heparin_Tube">Lithium Heparin Tube</option>
+            <option value="G6PD_Paper">G6PD Paper</option>
+            <option value="Blood_Spot_Paper">Blood Spot Paper</option>
+            <option value="Foam_Box">Foam Box</option>
+            <option value="Parafilm">Parafilm</option>
+            <option value="Bijoue_bottle">Bijoue bottle</option>
+            <option value="Glass_slides">Glass slides</option>
+            <option value="Microscope_Slide">Microscope Slide</option>
+            <option value="Plain_tube_with_red_stopper">Plain tube with red stopper</option>
+            <option value="Sodium_Heparin_tube">Sodium Heparin tube</option>
         </select>
-        <select name="choice2" id="c9">
-            <option value="volvo"></option>
-            <option value="saab">Gel Tube</option>
-            <option value="opel">EDTA Tube</option>
-            <option value="audi">Gluc Tube</option>
+
+        <select [(ngModel)]="selectedValue9" (change)="onChange9($event.target)" name="choice2" id="c9">
+            <option value=""></option>
+            <option value="Biohazard_bag">Biohazard bag</option>
+            <option value="Gel_Tube">Gel Tube</option>
+            <option value="EDTA_Tube">EDTA Tube</option>
+            <option value="Gluc_Tube">Gluc Tube</option>
+            <option value="Coag_Tube">Coag Tube</option>
+            <option value="urine_container">urine container</option>
+            <option value="Paeds_Gel">Paeds Gel</option>
+            <option value="Paeds_FBC">Paeds FBC</option>
+            <option value="Paeds_EDTA">Paeds EDTA</option>
+            <option value="Stool_Container">Stool Container</option>
+            <option value="Swab_Amies_gel">Swab - Amies gel</option>
+            <option value="Swab_Carry_Blair">Swab - Carry Blair</option>
+            <option value="ESR_Tube">ESR Tube</option>
+            <option value="24h_urine_container_(BOX)">24h urine container (BOX)</option>
+            <option value="C&S_Aerobic">C&S Aerobic</option>
+            <option value="C&S_Anaerobic">C&S Anaerobic</option>
+            <option value="C&S_Peads">C&S Peads</option>
+            <option value="C&S_Fungal">C&S Fungal</option>
+            <option value="Lithium_Heparin_Tube">Lithium Heparin Tube</option>
+            <option value="G6PD_Paper">G6PD Paper</option>
+            <option value="Blood_Spot_Paper">Blood Spot Paper</option>
+            <option value="Foam_Box">Foam Box</option>
+            <option value="Parafilm">Parafilm</option>
+            <option value="Bijoue_bottle">Bijoue bottle</option>
+            <option value="Glass_slides">Glass slides</option>
+            <option value="Microscope_Slide">Microscope Slide</option>
+            <option value="Plain_tube_with_red_stopper">Plain tube with red stopper</option>
+            <option value="Sodium_Heparin_tube">Sodium Heparin tube</option>
         </select>
-        <select name="choice2" id="c10">
-            <option value="volvo"></option>
-            <option value="saab">Gel Tube</option>
-            <option value="opel">EDTA Tube</option>
-            <option value="audi">Gluc Tube</option>
+
+        <select [(ngModel)]="selectedValue10" (change)="onChange10($event.target)" name="choice2" id="c10">
+            <option value=""></option>
+            <option value="Biohazard_bag">Biohazard bag</option>
+            <option value="Gel_Tube">Gel Tube</option>
+            <option value="EDTA_Tube">EDTA Tube</option>
+            <option value="Gluc_Tube">Gluc Tube</option>
+            <option value="Coag_Tube">Coag Tube</option>
+            <option value="urine_container">urine container</option>
+            <option value="Paeds_Gel">Paeds Gel</option>
+            <option value="Paeds_FBC">Paeds FBC</option>
+            <option value="Paeds_EDTA">Paeds EDTA</option>
+            <option value="Stool_Container">Stool Container</option>
+            <option value="Swab_Amies_gel">Swab - Amies gel</option>
+            <option value="Swab_Carry_Blair">Swab - Carry Blair</option>
+            <option value="ESR_Tube">ESR Tube</option>
+            <option value="24h_urine_container_(BOX)">24h urine container (BOX)</option>
+            <option value="C&S_Aerobic">C&S Aerobic</option>
+            <option value="C&S_Anaerobic">C&S Anaerobic</option>
+            <option value="C&S_Peads">C&S Peads</option>
+            <option value="C&S_Fungal">C&S Fungal</option>
+            <option value="Lithium_Heparin_Tube">Lithium Heparin Tube</option>
+            <option value="G6PD_Paper">G6PD Paper</option>
+            <option value="Blood_Spot_Paper">Blood Spot Paper</option>
+            <option value="Foam_Box">Foam Box</option>
+            <option value="Parafilm">Parafilm</option>
+            <option value="Bijoue_bottle">Bijoue bottle</option>
+            <option value="Glass_slides">Glass slides</option>
+            <option value="Microscope_Slide">Microscope Slide</option>
+            <option value="Plain_tube_with_red_stopper">Plain tube with red stopper</option>
+            <option value="Sodium_Heparin_tube">Sodium Heparin tube</option>
         </select>
-        <select name="choice2" id="c11">
-            <option value="volvo"></option>
-            <option value="saab">Gel Tube</option>
-            <option value="opel">EDTA Tube</option>
-            <option value="audi">Gluc Tube</option>
+
+        <select [(ngModel)]="selectedValue11" (change)="onChange11($event.target)" name="choice2" id="c11">
+            <option value=""></option>
+            <option value="Biohazard_bag">Biohazard bag</option>
+            <option value="Gel_Tube">Gel Tube</option>
+            <option value="EDTA_Tube">EDTA Tube</option>
+            <option value="Gluc_Tube">Gluc Tube</option>
+            <option value="Coag_Tube">Coag Tube</option>
+            <option value="urine_container">urine container</option>
+            <option value="Paeds_Gel">Paeds Gel</option>
+            <option value="Paeds_FBC">Paeds FBC</option>
+            <option value="Paeds_EDTA">Paeds EDTA</option>
+            <option value="Stool_Container">Stool Container</option>
+            <option value="Swab_Amies_gel">Swab - Amies gel</option>
+            <option value="Swab_Carry_Blair">Swab - Carry Blair</option>
+            <option value="ESR_Tube">ESR Tube</option>
+            <option value="24h_urine_container_(BOX)">24h urine container (BOX)</option>
+            <option value="C&S_Aerobic">C&S Aerobic</option>
+            <option value="C&S_Anaerobic">C&S Anaerobic</option>
+            <option value="C&S_Peads">C&S Peads</option>
+            <option value="C&S_Fungal">C&S Fungal</option>
+            <option value="Lithium_Heparin_Tube">Lithium Heparin Tube</option>
+            <option value="G6PD_Paper">G6PD Paper</option>
+            <option value="Blood_Spot_Paper">Blood Spot Paper</option>
+            <option value="Foam_Box">Foam Box</option>
+            <option value="Parafilm">Parafilm</option>
+            <option value="Bijoue_bottle">Bijoue bottle</option>
+            <option value="Glass_slides">Glass slides</option>
+            <option value="Microscope_Slide">Microscope Slide</option>
+            <option value="Plain_tube_with_red_stopper">Plain tube with red stopper</option>
+            <option value="Sodium_Heparin_tube">Sodium Heparin tube</option>
         </select>
-        <select name="choice2" id="c12">
-            <option value="volvo"></option>
-            <option value="saab">Gel Tube</option>
-            <option value="opel">EDTA Tube</option>
-            <option value="audi">Gluc Tube</option>
+
+        <select [(ngModel)]="selectedValue12" (change)="onChange12($event.target)" name="choice2" id="c12">
+            <option value=""></option>
+            <option value="Biohazard_bag">Biohazard bag</option>
+            <option value="Gel_Tube">Gel Tube</option>
+            <option value="EDTA_Tube">EDTA Tube</option>
+            <option value="Gluc_Tube">Gluc Tube</option>
+            <option value="Coag_Tube">Coag Tube</option>
+            <option value="urine_container">urine container</option>
+            <option value="Paeds_Gel">Paeds Gel</option>
+            <option value="Paeds_FBC">Paeds FBC</option>
+            <option value="Paeds_EDTA">Paeds EDTA</option>
+            <option value="Stool_Container">Stool Container</option>
+            <option value="Swab_Amies_gel">Swab - Amies gel</option>
+            <option value="Swab_Carry_Blair">Swab - Carry Blair</option>
+            <option value="ESR_Tube">ESR Tube</option>
+            <option value="24h_urine_container_(BOX)">24h urine container (BOX)</option>
+            <option value="C&S_Aerobic">C&S Aerobic</option>
+            <option value="C&S_Anaerobic">C&S Anaerobic</option>
+            <option value="C&S_Peads">C&S Peads</option>
+            <option value="C&S_Fungal">C&S Fungal</option>
+            <option value="Lithium_Heparin_Tube">Lithium Heparin Tube</option>
+            <option value="G6PD_Paper">G6PD Paper</option>
+            <option value="Blood_Spot_Paper">Blood Spot Paper</option>
+            <option value="Foam_Box">Foam Box</option>
+            <option value="Parafilm">Parafilm</option>
+            <option value="Bijoue_bottle">Bijoue bottle</option>
+            <option value="Glass_slides">Glass slides</option>
+            <option value="Microscope_Slide">Microscope Slide</option>
+            <option value="Plain_tube_with_red_stopper">Plain tube with red stopper</option>
+            <option value="Sodium_Heparin_tube">Sodium Heparin tube</option>
         </select>
     </div>
     

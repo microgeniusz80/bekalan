@@ -1,0 +1,42 @@
+.table td.fit, 
+.table th.fit {
+   white-space: nowrap;
+   width: 1%;
+}
+
+.wrap, .wrap canvas { width:1339px; height:948px }
+.wrap { position:relative }
+.wrap > * { position:absolute }
+
+#q1 { top:381px; left:450px; width:80px; height:21px }
+#q2 { top:406px; left:450px; width:80px; height:21px }
+#q3 { top:431px; left:450px; width:80px; height:21px }
+#q4 { top:456px; left:450px; width:80px; height:21px }
+#q5 { top:481px; left:450px; width:80px; height:21px }
+#q6 { top:506px; left:450px; width:80px; height:21px }
+#q7 { top:531px; left:450px; width:80px; height:21px }
+#q8 { top:556px; left:450px; width:80px; height:21px }
+#q9 { top:581px; left:450px; width:80px; height:21px }
+#q10 { top:606px; left:450px; width:80px; height:21px }
+#q11 { top:631px; left:450px; width:80px; height:21px }
+#q12 { top:657px; left:450px; width:80px; height:21px }
+
+#b1 { top:702px; left:158px;}
+#b2 { top:702px; left:258px;}
+
+#c1 { top:381px; left:220px; width:210px; height:21px }
+#c2 { top:406px; left:220px; width:210px; height:21px }
+#c3 { top:431px; left:220px; width:210px; height:21px }
+#c4 { top:456px; left:220px; width:210px; height:21px }
+#c5 { top:481px; left:220px; width:210px; height:21px }
+#c6 { top:506px; left:220px; width:210px; height:21px }
+#c7 { top:531px; left:220px; width:210px; height:21px }
+#c8 { top:556px; left:220px; width:210px; height:21px }
+#c9 { top:581px; left:220px; width:210px; height:21px }
+#c10 { top:606px; left:220px; width:210px; height:21px }
+#c11 { top:631px; left:220px; width:210px; height:21px }
+#c12 { top:657px; left:220px; width:210px; height:21px }
+
+input { font-size: 12px; text-align: center; }
+
+select { font-size: 12px; }

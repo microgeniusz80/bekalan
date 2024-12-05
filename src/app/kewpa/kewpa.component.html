@@ -6,23 +6,120 @@
 <div [hidden]="!checkServer" class="container mt-5">
     <h1>{{entryStatus}}</h1>
 </div>
-<div>
-    <table [hidden]="hideTable" class="table">
+<div [hidden]="hideKewpaForm" class="container mt-5">
+    <h2>KEWPA Form</h2>
+    <div class="wrap">
+        <canvas class="d-flex align-items-center" #canvas width="1339" height="948"></canvas>
+        <input id="q1"/>
+        <input id="q2"/>
+        <input id="q3"/>
+        <input id="q4"/>
+        <input id="q5"/>
+        <input id="q6"/>
+        <input id="q7"/>
+        <input id="q8"/>
+        <input id="q9"/>
+        <input id="q10"/>
+        <input id="q11"/>
+        <input id="q12"/>
+
+        <button (click)="resetBox()" class="btn btn-primary" id="b1">Send</button>
+        <button (click)="retrieveBox()" class="btn btn-primary" id="b2">Retrieve</button>
+
+        <select [(ngModel)]="selectedValue1" (change)="onChange1($event.target)" name="cars" id="c1">
+            <option value="volvo"></option>
+            <option value="saab">Gel Tube</option>
+            <option value="opel">EDTA Tube</option>
+            <option value="audi">Gluc Tube</option>
+        </select>
+        <select [(ngModel)]="selectedValue2" (change)="onChange2($event.target)" name="choice2" id="c2">
+            <option value="volvo"></option>
+            <option value="saab">Gel Tube</option>
+            <option value="opel">EDTA Tube</option>
+            <option value="audi">Gluc Tube</option>
+        </select>
+        <select [(ngModel)]="selectedValue3" (change)="onChange3($event.target)" name="choice2" id="c3">
+            <option value="volvo"></option>
+            <option value="saab">Gel Tube</option>
+            <option value="opel">EDTA Tube</option>
+            <option value="audi">Gluc Tube</option>
+        </select>
+        <select [(ngModel)]="selectedValue4" (change)="onChange4($event.target)" name="choice2" id="c4">
+            <option value="volvo"></option>
+            <option value="saab">Gel Tube</option>
+            <option value="opel">EDTA Tube</option>
+            <option value="audi">Gluc Tube</option>
+        </select>
+        <select [(ngModel)]="selectedValue5" (change)="onChange5($event.target)" name="choice2" id="c5">
+            <option value="volvo"></option>
+            <option value="saab">Gel Tube</option>
+            <option value="opel">EDTA Tube</option>
+            <option value="audi">Gluc Tube</option>
+        </select>
+        <select [(ngModel)]="selectedValue6" name="choice2" id="c6">
+            <option value="volvo"></option>
+            <option value="saab">Gel Tube</option>
+            <option value="opel">EDTA Tube</option>
+            <option value="audi">Gluc Tube</option>
+        </select>
+        <select [(ngModel)]="selectedValue7" name="choice2" id="c7">
+            <option value="volvo"></option>
+            <option value="saab">Gel Tube</option>
+            <option value="opel">EDTA Tube</option>
+            <option value="audi">Gluc Tube</option>
+        </select>
+        <select [(ngModel)]="selectedValue8" name="choice2" id="c8">
+            <option value="volvo"></option>
+            <option value="saab">Gel Tube</option>
+            <option value="opel">EDTA Tube</option>
+            <option value="audi">Gluc Tube</option>
+        </select>
+        <select name="choice2" id="c9">
+            <option value="volvo"></option>
+            <option value="saab">Gel Tube</option>
+            <option value="opel">EDTA Tube</option>
+            <option value="audi">Gluc Tube</option>
+        </select>
+        <select name="choice2" id="c10">
+            <option value="volvo"></option>
+            <option value="saab">Gel Tube</option>
+            <option value="opel">EDTA Tube</option>
+            <option value="audi">Gluc Tube</option>
+        </select>
+        <select name="choice2" id="c11">
+            <option value="volvo"></option>
+            <option value="saab">Gel Tube</option>
+            <option value="opel">EDTA Tube</option>
+            <option value="audi">Gluc Tube</option>
+        </select>
+        <select name="choice2" id="c12">
+            <option value="volvo"></option>
+            <option value="saab">Gel Tube</option>
+            <option value="opel">EDTA Tube</option>
+            <option value="audi">Gluc Tube</option>
+        </select>
+    </div>
+    
+</div>
+<div [hidden]="hideTable" class="container">
+    <h2 class="mb-5">Requested Stock</h2>
+    <table class="table">
         <thead>
-            <tr>
+            <tr class="w-auto">
                 <th>No.</th>
                 <th>Items</th>
                 <th>count</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let data of currentRecord; let i = index">
+            <tr class="w-auto" *ngFor="let data of currentRecord; let i = index">
                 <td>{{i + 1}}</td>
                 <td>{{data.items}}</td>
                 <td>{{data.value}}</td>
             </tr>
         </tbody>
     </table>
+    <h5 class="mt-5">Status: Awaiting approval.</h5>
 </div>
 <div [hidden]="checkServer" class="container mt-5">
     <h2>BORANG PERMOHONAN STOK (INDIVIDU KEPADA STOR)</h2>

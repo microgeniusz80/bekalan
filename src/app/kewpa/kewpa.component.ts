@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-kewpa',
@@ -7,16 +8,100 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./kewpa.component.css']
 })
 export class KewpaComponent implements OnInit {
+  @ViewChild('canvas',{static:true}) canvas!: ElementRef;
+
+  canvasOne:any;
+
   listItem:any = [];
   currentClient:string = 'none'
   serverReply:string = 'none'
   checkServer:boolean = true;
   interval:any;
-  entryStatus:string = 'Please wait for few seconds! Server is starting!'
+  entryStatus:string = 'Please wait for few seconds! Loading data!'
   currentRecord:any = [];
   hideTable:boolean = true;
+  hideKewpaForm:boolean = false;
+
+  selectedValue1: any="";
+  selectedValue2: any="";
+  selectedValue3: any="";
+  selectedValue4: any="";
+  selectedValue5: any="";
+  selectedValue6: any="";
+  selectedValue7: any="";
+  selectedValue8: any="";
+  selectedValue9: any="";
+
+  entry = {
+    "data":[
+      {
+        "data":"",
+        "value":0,
+      },
+      {
+        "data":"",
+        "value":0,
+      },
+      {
+        "data":"",
+        "value":0,
+      },
+      {
+        "data":"",
+        "value":0,
+      },
+      {
+        "data":"",
+        "value":0,
+      },
+      {
+        "data":"",
+        "value":0,
+      },
+      {
+        "data":"",
+        "value":0,
+      },
+      {
+        "data":"",
+        "value":0,
+      },
+      {
+        "data":"",
+        "value":0,
+      },
+      {
+        "data":"",
+        "value":0,
+      },
+      {
+        "data":"",
+        "value":0,
+      },
+      {
+        "data":"",
+        "value":0,
+      },
+    ]
+  }
+
+
+ resetBox(){
+  this.selectedValue1="";
+  console.log('resetted');
+  
+ }
 
   ngOnInit(): void {
+    //console.log('dalam entry: ',this.entry.data[0].data);
+    
+    this.canvasOne = this.canvas.nativeElement;
+    let topCanvas = this.canvasOne.offsetTop;
+    let leftCanvas = this.canvasOne.offsetLeft;
+    const ctx = this.canvasOne.getContext('2d');
+
+    this.start(ctx, topCanvas, leftCanvas, this.canvasOne);
+
     console.log('data: ', environment.ward)
     this.currentClient = environment.ward;
     this.interval = setInterval(() => {
@@ -24,6 +109,132 @@ export class KewpaComponent implements OnInit {
     }, 4000);
     console.log('the interval: ', this.interval)
     
+  }
+
+  retrieveBox(){
+    console.log('value of: ',this.selectedValue1);
+    
+  }
+
+  async start(ctx: CanvasRenderingContext2D, topCanvas: number, leftCanvas: number, canvas: any){
+    var img = new Image();
+    img.src = "/assets/kewpa.png";
+    img.onload = () => {
+      ctx.drawImage(img, 0, 0, 1339, 948);
+
+      ctx.font = "16px Arial";
+      ctx.textAlign = "left";
+      //ctx.fillText('Citrate Tube',220,398);
+      //ctx.fillText('MANJUNG, PERAK HAS AGREED TO PRIVILEGE',215,90);
+    
+    }
+  }
+
+  onChange1(newValue: any){
+    var test = false
+    
+
+    this.entry.data.forEach((entry, index) => {
+      if(entry.data !== ''){
+        if(entry.data == newValue.value){
+          test = true
+        }
+      }
+    })
+
+    if(test){
+      test = false
+      newValue.value = null
+      alert('repeated')
+    } else {
+      this.entry.data[0].data = newValue.value;
+    }
+  }
+
+  onChange2(newValue: any){
+    var test = false
+    
+
+    this.entry.data.forEach((entry, index) => {
+      if(entry.data !== ''){
+        if(entry.data == newValue.value){
+          test = true
+        }
+      }
+    })
+
+    if(test){
+      test = false
+      
+      alert('repeated')
+      //this.selectedValue2 = null
+      newValue.value = null
+    } else {
+      this.entry.data[1].data = newValue.value;
+    }
+  }
+
+  onChange3(newValue: any){
+    var test = false
+    
+
+    this.entry.data.forEach((entry, index) => {
+      if(entry.data !== ''){
+        if(entry.data == newValue.value){
+          test = true
+        }
+      }
+    })
+
+    if(test){
+      test = false
+      newValue.value = null
+      alert('repeated')
+    } else {
+      this.entry.data[2].data = newValue.value;
+    }
+  }
+
+  onChange4(newValue: any){
+    var test = false
+    
+
+    this.entry.data.forEach((entry, index) => {
+      if(entry.data !== ''){
+        if(entry.data == newValue.value){
+          test = true
+        }
+      }
+    })
+
+    if(test){
+      test = false
+      newValue.value = null
+      alert('repeated')
+    } else {
+      this.entry.data[3].data = newValue.value;
+    }
+  }
+
+  onChange5(newValue: any){
+    var test = false
+    
+
+    this.entry.data.forEach((entry, index) => {
+      if(entry.data !== ''){
+        if(entry.data == newValue.value){
+          test = true
+        }
+      }
+    })
+
+    if(test){
+      test = false
+      newValue.value = null
+      alert('repeated')
+    } else {
+      this.entry.data[4].data = newValue.value;
+    }
   }
 
   ngOnDestroy() {

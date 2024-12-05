@@ -36,6 +36,17 @@ export class KewpaComponent implements OnInit {
   selectedValue12: any="";
 
   qn1:any=null;
+  qn2:any=null;
+  qn3:any=null;
+  qn4:any=null;
+  qn5:any=null;
+  qn6:any=null;
+  qn7:any=null;
+  qn8:any=null;
+  qn9:any=null;
+  qn10:any=null;
+  qn11:any=null;
+  qn12:any=null;
 
   alertcontent:string='Stock detail already exist';
 
@@ -94,8 +105,19 @@ export class KewpaComponent implements OnInit {
 
 
  resetBox(){
-  this.selectedValue1="";
-  console.log('resetted');
+  this.entry.data[0].value = this.qn1
+  this.entry.data[1].value = this.qn2
+  this.entry.data[2].value = this.qn3
+  this.entry.data[3].value = this.qn4
+  this.entry.data[4].value = this.qn5
+  this.entry.data[5].value = this.qn6
+  this.entry.data[6].value = this.qn7
+  this.entry.data[7].value = this.qn8
+  this.entry.data[8].value = this.qn9
+  this.entry.data[9].value = this.qn10
+  this.entry.data[10].value = this.qn11
+  this.entry.data[11].value = this.qn12
+console.log('final data: ', this.entry)
   
  }
 

@@ -11,20 +11,20 @@
     <div class="wrap">
         <canvas class="d-flex align-items-center" #canvas width="1339" height="948"></canvas>
         <input type="number" id="q1" [(ngModel)]="qn1"/>
-        <input type="number" id="q2"/>
-        <input type="number" id="q3"/>
-        <input type="number" id="q4"/>
-        <input type="number" id="q5"/>
-        <input type="number" id="q6"/>
-        <input type="number" id="q7"/>
-        <input type="number" id="q8"/>
-        <input type="number" id="q9"/>
-        <input type="number" id="q10"/>
-        <input type="number" id="q11"/>
-        <input type="number" id="q12"/>
+        <input type="number" id="q2" [(ngModel)]="qn2"/>
+        <input type="number" id="q3" [(ngModel)]="qn3"/>
+        <input type="number" id="q4" [(ngModel)]="qn4"/>
+        <input type="number" id="q5" [(ngModel)]="qn5"/>
+        <input type="number" id="q6" [(ngModel)]="qn6"/>
+        <input type="number" id="q7" [(ngModel)]="qn7"/>
+        <input type="number" id="q8" [(ngModel)]="qn8"/>
+        <input type="number" id="q9" [(ngModel)]="qn9"/>
+        <input type="number" id="q10" [(ngModel)]="qn10"/>
+        <input type="number" id="q11" [(ngModel)]="qn11"/>
+        <input type="number" id="q12" [(ngModel)]="qn12"/>
 
         <button (click)="resetBox()" class="btn btn-primary" id="b1">Send</button>
-        <button (click)="retrieveBox()" class="btn btn-primary" id="b2">Retrieve</button>
+        <!-- <button (click)="retrieveBox()" class="btn btn-primary" id="b2">Retrieve</button> -->
 
         <select [(ngModel)]="selectedValue1" (change)="onChange1($event.target)" name="cars" id="c1">
             <option value=""></option>

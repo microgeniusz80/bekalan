@@ -117,13 +117,34 @@ export class KewpaComponent implements OnInit {
   this.entry.data[9].value = this.qn10
   this.entry.data[10].value = this.qn11
   this.entry.data[11].value = this.qn12
-console.log('final data: ', this.entry)
+  console.log('final data: ', this.entry)
+
+  var checking = false
+
+  this.entry.data.forEach((item, index) => {
+    if (item.data !== '' && item.value == null) {
+      checking = true
+      console.log('sangkut: ', index)
+    }
+
+    if (item.value !== null && item.data == '') {
+      checking = true
+      console.log('reverse sangkut: ', index)
+    }
+  })
+
+  if (checking){
+    alert("Please fill in the pair data")
+    checking = false
+  } else {
+    this.sendData(this.entry.data)
+  }
   
  }
 
   ngOnInit(): void {
     //console.log('dalam entry: ',this.entry.data[0].data);
-    
+    console.log('oninit data: ', this.entry.data)
     this.canvasOne = this.canvas.nativeElement;
     let topCanvas = this.canvasOne.offsetTop;
     let leftCanvas = this.canvasOne.offsetLeft;
@@ -161,8 +182,7 @@ console.log('final data: ', this.entry)
 
   onChange1(newValue: any){
     var test = false
-    
-
+    console.log('initial data: ', this.entry.data)
     this.entry.data.forEach((entry, index) => {
       if(entry.data !== ''){
         if(entry.data == newValue.value){
@@ -173,15 +193,16 @@ console.log('final data: ', this.entry)
 
     if(test){
       test = false
-      newValue.value = null
+      
       alert('Stock detail already exist')
+      newValue.value = ''
     } else {
       this.entry.data[0].data = newValue.value;
       if(newValue.value == ''){
-        this.qn1 = ''
+        this.qn1 = null
       }
 
-      this.entry.data[0].value = this.qn1;
+      //this.entry.data[0].value = this.qn1;
     }
 
     console.log('final data: ', this.entry.data)
@@ -189,12 +210,9 @@ console.log('final data: ', this.entry)
 
   onChange2(newValue: any){
     var test = false
-    
-
+    console.log('initial data: ', this.entry.data)
     this.entry.data.forEach((entry, index) => {
-      
       if(entry.data !== ''){
-        console.log('compare value: ', entry.data, ', ',newValue.value)
         if(entry.data == newValue.value){
           test = true
         }
@@ -209,6 +227,9 @@ console.log('final data: ', this.entry)
       newValue.value = null
     } else {
       this.entry.data[1].data = newValue.value;
+      if(newValue.value == ''){
+        this.qn2 = null
+      }
     }
 
     console.log('final data: ', this.entry.data)
@@ -232,6 +253,9 @@ console.log('final data: ', this.entry)
       alert('Stock detail already exist')
     } else {
       this.entry.data[2].data = newValue.value;
+      if(newValue.value == ''){
+        this.qn3 = null
+      }
     }
 
     console.log('final data: ', this.entry.data)
@@ -255,6 +279,9 @@ console.log('final data: ', this.entry)
       alert('Stock detail already exist')
     } else {
       this.entry.data[3].data = newValue.value;
+      if(newValue.value == ''){
+        this.qn4 = null
+      }
     }
 
     console.log('final data: ', this.entry.data)
@@ -278,6 +305,9 @@ console.log('final data: ', this.entry)
       alert('Stock detail already exist')
     } else {
       this.entry.data[4].data = newValue.value;
+      if(newValue.value == ''){
+        this.qn5 = null
+      }
     }
 
     console.log('final data: ', this.entry.data)
@@ -301,6 +331,9 @@ console.log('final data: ', this.entry)
       alert('Stock detail already exist')
     } else {
       this.entry.data[5].data = newValue.value;
+      if(newValue.value == ''){
+        this.qn6 = null
+      }
     }
 
     console.log('final data: ', this.entry.data)
@@ -324,6 +357,9 @@ console.log('final data: ', this.entry)
       alert('Stock detail already exist')
     } else {
       this.entry.data[6].data = newValue.value;
+      if(newValue.value == ''){
+        this.qn7 = null
+      }
     }
 
     console.log('final data: ', this.entry.data)
@@ -347,6 +383,9 @@ console.log('final data: ', this.entry)
       alert('Stock detail already exist')
     } else {
       this.entry.data[7].data = newValue.value;
+      if(newValue.value == ''){
+        this.qn8 = null
+      }
     }
 
     console.log('final data: ', this.entry.data)
@@ -370,6 +409,9 @@ console.log('final data: ', this.entry)
       alert('Stock detail already exist')
     } else {
       this.entry.data[8].data = newValue.value;
+      if(newValue.value == ''){
+        this.qn9 = null
+      }
     }
 
     console.log('final data: ', this.entry.data)
@@ -393,6 +435,9 @@ console.log('final data: ', this.entry)
       alert('Stock detail already exist')
     } else {
       this.entry.data[9].data = newValue.value;
+      if(newValue.value == ''){
+        this.qn10 = null
+      }
     }
 
     console.log('final data: ', this.entry.data)
@@ -416,6 +461,9 @@ console.log('final data: ', this.entry)
       alert('Stock detail already exist')
     } else {
       this.entry.data[10].data = newValue.value;
+      if(newValue.value == ''){
+        this.qn11 = null
+      }
     }
 
     console.log('final data: ', this.entry.data)
@@ -439,6 +487,9 @@ console.log('final data: ', this.entry)
       alert('Stock detail already exist')
     } else {
       this.entry.data[11].data = newValue.value;
+      if(newValue.value == ''){
+        this.qn12 = null
+      }
     }
 
     console.log('final data: ', this.entry.data)
@@ -647,6 +698,220 @@ console.log('final data: ', this.entry)
       console.error('the error is: ', error);
       this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
     })
+  }
+
+  sendData(data:any[]){
+
+    var kod1=0
+    var kod2=0
+    var kod3=0
+    var kod4=0
+    var kod5=0
+    var kod6=0
+    var kod7=0
+    var kod8=0
+    var kod9=0
+    var kod10=0
+    var kod11=0
+    var kod12=0
+    var kod13=0
+    var kod14=0
+    var kod15=0
+    var kod16=0
+    var kod17=0
+    var kod18=0
+    var kod19=0
+    var kod20=0
+    var kod21=0
+    var kod22=0
+    var kod23=0
+    var kod24=0
+    var kod25=0
+    var kod26=0
+    var kod27=0
+    var kod28=0
+    
+    data.forEach(item =>{
+      if (item.data !== ''){
+        switch(item.data){
+          case 'Biohazard_bag': {
+            kod1 = item.value
+            break
+          }
+          case 'Gel_Tube': {
+            kod2 = item.value
+            break
+          }
+          case 'EDTA_Tube': {
+            kod3 = item.value
+            break
+          }
+          case 'Gluc_Tube': {
+            kod4 = item.value
+            break
+          }
+          case 'Coag_Tube': {
+            kod5 = item.value
+            break
+          }
+          case 'urine_container': {
+            kod6 = item.value
+            break
+          }
+          case 'Paeds_Gel': {
+            kod7 = item.value
+            break
+          }
+          case 'Paeds_FBC': {
+            kod8 = item.value
+            break
+          }
+          case 'Paeds_EDTA': {
+            kod9 = item.value
+            break
+          }
+          case 'Stool_Container': {
+            kod10 = item.value
+            break
+          }
+          case 'Swab_Amies_gel': {
+            kod11 = item.value
+            break
+          }
+          case 'Swab_Carry_Blair': {
+            kod12 = item.value
+            break
+          }
+          case 'ESR_Tube': {
+            kod13 = item.value
+            break
+          }
+          case '24h_urine_container_(BOX)': {
+            kod14 = item.value
+            break
+          }
+          case 'C&S_Aerobic': {
+            kod15 = item.value
+            break
+          }
+          case 'C&S_Anaerobic': {
+            kod16 = item.value
+            break
+          }
+          case 'C&S_Peads': {
+            kod17 = item.value
+            break
+          }
+          case 'C&S_Fungal': {
+            kod18 = item.value
+            break
+          }
+          case 'Lithium_Heparin_Tube': {
+            kod19 = item.value
+            break
+          }
+          case 'G6PD_Paper': {
+            kod20 = item.value
+            break
+          }
+          case 'Blood_Spot_Paper': {
+            kod21 = item.value
+            break
+          }
+          case 'Foam_Box': {
+            kod22 = item.value
+            break
+          }
+          case 'Parafilm': {
+            kod23 = item.value
+            break
+          }
+          case 'Bijoue_bottle': {
+            kod24 = item.value
+            break
+          }
+          case 'Glass_slides': {
+            kod25 = item.value
+            break
+          }
+          case 'Microscope_Slide': {
+            kod26 = item.value
+            break
+          }
+          case 'Plain_tube_with_red_stopper': {
+            kod27 = item.value
+            break
+          }
+          case 'Sodium_Heparin_tube': {
+            kod28 = item.value
+            break
+          }
+        }
+      }
+    })
+
+
+    
+      fetch('https://tricky-scratch-parcel.glitch.me',{
+        method:'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body:JSON.stringify(
+          {
+            num1:kod1, 
+            num2:kod2,
+            num3:kod3,
+            num4:kod4,
+            num5:kod5,
+            num6:kod6,
+            num7:kod7,
+            num8:kod8,
+            num9:kod9,
+            num10:kod10,
+            num11:kod11,
+            num12:kod12,
+            num13:kod13,
+            num14:kod14,
+            num15:kod15,
+            num16:kod16,
+            num17:kod17,
+            num18:kod18,
+            num19:kod19,
+            num20:kod20,
+            num21:kod21,
+            num22:kod22,
+            num23:kod23,
+            num24:kod24,
+            num25:kod25,
+            num26:kod26,
+            num27:kod27,
+            num28:kod28,
+            ward:this.currentClient
+          }
+        )
+      })
+      .then(response => response.text())
+      .then((data)=>{
+        console.log('the data is', JSON.stringify(data))
+        console.log('why: ',JSON.stringify(data))
+        var status = data.toString();
+        if(status === 'OK'){
+          this.serverReply = 'Data is sent sucessfully!'
+          alert('Data is sent succesfully!');
+          console.log('im in here')
+        } else {
+          this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
+          alert('Something is wrong, data is not saved. Please contact Encik Sayed!');
+        }
+        console.log('after: ', status)
+      })
+      .catch((error)=>{
+        console.error('the error is: ', error);
+        this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
+        alert('Something is wrong, data is not saved. Please contact Encik Sayed!');
+      })
+    
   }
 
   addItem(

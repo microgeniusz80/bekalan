@@ -9,16 +9,19 @@ import { ViewChild, ElementRef } from '@angular/core';
 })
 export class KewpaComponent implements OnInit {
   @ViewChild('canvas',{static:true}) canvas!: ElementRef;
+  @ViewChild('canvas2',{static:true}) canvas2!: ElementRef;
 
   canvasOne:any;
+  canvasTwo:any;
 
+  canvasShow:any = [];
   listItem:any = [];
   currentClient:string = 'none'
   serverReply:string = 'none'
   checkServer:boolean = true;
   interval:any;
   entryStatus:string = 'Please wait for few seconds! Loading data!'
-  currentRecord:any = [];
+  currentRecord:any[] = [];
   hideTable:boolean = true;
   hideKewpaForm:boolean = false;
 
@@ -677,10 +680,42 @@ export class KewpaComponent implements OnInit {
             }
           )
         }
+
+
         this.entryStatus = ''
         console.log('the array contains: ', this.currentRecord)
+        // this.currentRecord.foreach((item: any)=>{
+        //   console.log('dalam current record buang kosong',item)
+        // })
+
+       
+
         this.hideTable = false;
       })
+console.log('before masuk')
+      this.currentRecord.forEach((item: any)=>{
+        console.log('selepas masuk')
+        if (item.value !== '0'){
+          this.canvasShow.push(
+            {
+              items:item.items,
+              value:item.value
+            }
+          )
+          console.log('barang:',item)
+        }
+      });
+
+      console.log('canvasShow: ', this.canvasShow)
+
+      this.canvasTwo = this.canvas2.nativeElement;
+      let topCanvas2 = this.canvasTwo.offsetTop;
+      let leftCanvas2 = this.canvasTwo.offsetLeft;
+      const ctx2 = this.canvasTwo.getContext('2d');
+
+    this.start2(ctx2, topCanvas2, leftCanvas2, this.canvasTwo);
+
+      
 
 
       for (let i = 0; i < returnedData[0].length; i++) {
@@ -698,6 +733,20 @@ export class KewpaComponent implements OnInit {
       console.error('the error is: ', error);
       this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
     })
+  }
+
+  async start2(ctx: CanvasRenderingContext2D, topCanvas: number, leftCanvas: number, canvas: any){
+    var img = new Image();
+    img.src = "/assets/kewpa.png";
+    img.onload = () => {
+      ctx.drawImage(img, 0, 0, 1339, 948);
+
+      ctx.font = "16px Arial";
+      ctx.textAlign = "left";
+      ctx.fillText('Citrate Tube',220,398);
+      //ctx.fillText('MANJUNG, PERAK HAS AGREED TO PRIVILEGE',215,90);
+    
+    }
   }
 
   sendData(data:any[]){

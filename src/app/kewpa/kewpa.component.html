@@ -6,8 +6,8 @@
 <div [hidden]="!checkServer" class="container mt-5">
     <h1>{{entryStatus}}</h1>
 </div>
-<div [hidden]="hideKewpaForm" class="container mt-5">
-    <h2>KEWPA Form</h2>
+<div [hidden]="checkServer" class="container mt-5">
+    <h2>{{currentClient}}</h2>
     <div class="wrap">
         <canvas class="d-flex align-items-center" #canvas width="1339" height="948"></canvas>
         <input type="number" id="q1" [(ngModel)]="qn1"/>
@@ -413,8 +413,14 @@
     
 </div>
 <div [hidden]="hideTable" class="container">
-    <h2 class="mb-5">Requested Stock</h2>
-    <table class="table">
+    <h2>{{currentClient}}</h2>
+    <h5 >Requested Stock</h5>
+    <h5 >Status: Awaiting approval.</h5>
+    <div class="wrap">
+        <canvas class="d-flex align-items-center" #canvas2 width="1339" height="948"></canvas>
+    </div>
+    
+    <!-- <table class="table">
         <thead>
             <tr class="w-auto">
                 <th>No.</th>
@@ -429,10 +435,10 @@
                 <td>{{data.value}}</td>
             </tr>
         </tbody>
-    </table>
-    <h5 class="mt-5">Status: Awaiting approval.</h5>
+    </table> -->
+    
 </div>
-<div [hidden]="checkServer" class="container mt-5">
+<!-- <div [hidden]="checkServer" class="container mt-5">
     <h2>BORANG PERMOHONAN STOK (INDIVIDU KEPADA STOR)</h2>
     <div class="row mt-5">
         <div class="col-lg-4">
@@ -667,14 +673,7 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="col">
-            <div class="card">
-                <h2 class="card-header">Items</h2>
-                <div class="card-body">
-                    questions
-                </div>
-            </div>
-        </div> -->
+
     </div>
     <div class="row mb-5">
         <div class="col-12">
@@ -684,4 +683,4 @@
             {{serverReply}}
         </div>
     </div>
-</div>
+</div> -->

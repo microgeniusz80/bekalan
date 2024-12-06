@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ViewChild, ElementRef } from '@angular/core';
 import { clippingParents } from '@popperjs/core';
+import { jsPDF } from "jspdf";
 
 @Component({
   selector: 'app-kewpa',
@@ -106,6 +107,20 @@ export class KewpaComponent implements OnInit {
         "value":0,
       },
     ]
+  }
+
+  async printCanvas(){
+
+    //var imgData = this.canvasOne.toDataURL("image/png", 1.0);
+    var imgData2 = this.canvasTwo.toDataURL("image/png", 1.0);
+    var pdf = new jsPDF('l', 'mm', [297, 210]);
+    // pdf.addImage(imgData, 'JPEG', 0,);
+    // pdf.save("download.pdf");
+
+    pdf.addImage(imgData2,'PNG',0, 0, 300, 210);
+    // pdf.addPage();
+    // pdf.addImage(imgData2,'PNG',7, 10, 195, 270);
+    pdf.save('hsmcp.pdf');
   }
 
 
@@ -758,7 +773,21 @@ console.log('before masuk')
 
       ctx.font = "16px Arial";
       ctx.textAlign = "left";
-      ctx.fillText('Citrate Tube',220,398);
+
+      // this.canvasShow.forEach((item: any) => {
+      //   ctx.fillText('Citrate Tube',220,398);
+      //   console.log('content: ' + item)
+      // })
+
+      for (let i = 0; i < this.canvasShow.length; i++) {
+        ctx.textAlign = "left";
+        ctx.fillText(this.canvasShow[i].items,220,398+i*25);
+        ctx.textAlign = "center";
+        ctx.fillText(this.canvasShow[i].value,490,398+i*25);
+        console.log('content: ' + this.canvasShow[i].items)
+      }
+
+      
       //ctx.fillText('MANJUNG, PERAK HAS AGREED TO PRIVILEGE',215,90);
     
     }

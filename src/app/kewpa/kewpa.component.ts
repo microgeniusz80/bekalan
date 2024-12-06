@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { ViewChild, ElementRef } from '@angular/core';
+import { clippingParents } from '@popperjs/core';
 
 @Component({
   selector: 'app-kewpa',
@@ -19,6 +20,7 @@ export class KewpaComponent implements OnInit {
   currentClient:string = 'none'
   serverReply:string = 'none'
   checkServer:boolean = true;
+  titlemessagge:boolean = true;
   interval:any;
   entryStatus:string = 'Please wait for few seconds! Loading data!'
   currentRecord:any[] = [];
@@ -539,7 +541,10 @@ export class KewpaComponent implements OnInit {
         console.log('Request for this month already done')
         this.entryStatus = 'Request for this month already done. Loading data...'
       } else {
-        this.checkServer = false;
+        //this.checkServer = false;
+        this.titlemessagge = false;
+        console.log('check()');
+        
       }
     })
     .catch((error)=>{
@@ -570,7 +575,10 @@ export class KewpaComponent implements OnInit {
         console.log('Request for this month already done')
         this.entryStatus = 'Request for this month already done.'
       } else {
-        this.checkServer = false;
+        //this.checkServer = false;
+        console.log('checkTrue()');
+        
+        this.titlemessagge = false;
       }
     })
     .catch((error)=>{
@@ -601,7 +609,10 @@ export class KewpaComponent implements OnInit {
         console.log('Request for this month already done')
         this.entryStatus = 'Request for this month already done.'
       } else {
-        this.checkServer = false;
+        //this.checkServer = false;
+        console.log('checkfalse()');
+        
+        this.titlemessagge = false;
       }
     })
     .catch((error)=>{
@@ -633,6 +644,9 @@ export class KewpaComponent implements OnInit {
         this.loadEnteredData();
       } else {
         this.checkServer = false;
+        console.log('checkalreadyfilled()');
+        
+        this.titlemessagge = false;
       }
     })
     .catch((error)=>{
@@ -689,7 +703,8 @@ export class KewpaComponent implements OnInit {
         // })
 
        
-
+        this.titlemessagge = true;
+        this.checkServer = true
         this.hideTable = false;
       })
 console.log('before masuk')
@@ -948,6 +963,7 @@ console.log('before masuk')
         if(status === 'OK'){
           this.serverReply = 'Data is sent sucessfully!'
           alert('Data is sent succesfully!');
+          this.loadEnteredData();
           console.log('im in here')
         } else {
           this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'

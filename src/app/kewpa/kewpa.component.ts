@@ -54,6 +54,19 @@ export class KewpaComponent implements OnInit {
   qn11:any=null;
   qn12:any=null;
 
+  bn1:any=null;
+  bn2:any=null;
+  bn3:any=null;
+  bn4:any=null;
+  bn5:any=null;
+  bn6:any=null;
+  bn7:any=null;
+  bn8:any=null;
+  bn9:any=null;
+  bn10:any=null;
+  bn11:any=null;
+  bn12:any=null;
+
   alertcontent:string='Stock detail already exist';
 
   entry = {
@@ -694,7 +707,7 @@ export class KewpaComponent implements OnInit {
       let my_object = {}; 
       let colum_criteria = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56];
       let description = ['BIOHAZ BAG','GEL TUBE','EDTA TUBE','GLUC TUBE','COAG TUBE','URINE CONT','PAEDS GEL', 'PAEDS FBC', 'PAEDS EDTA', 'STOOL CONT', 'SWAB - AMIES (GEL)', 'SWAB - CARRY BLAIR', 'ESR TUBE', '24 HRS URINE CONTAINER (BOX)', 'C&S AEROBIC', 'C&S ANAEROBIC', 'C&S PAEDS', 'C&S FUNGAL', 'LITHIUM HEP TUBE', 'G6PD PAPER', 'BLOOD SPOT PAPER', 'FOAM BOX', 'PARAFILM', 'BIJOUE BOTTLE', 'GLASS SLIDES', 'MICROSCOPE SLIDE', 'PLAIN TUBE + RED STOPER', 'SODIUM HEP TUBE'];
-
+      console.log('RETURNED DATA: ', returnedData[0])
       colum_criteria.forEach((data, index)=>{
         console.log('the number: ', returnedData[0][data])
         console.log('the index: ', index)

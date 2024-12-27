@@ -28,6 +28,9 @@ export class KewpaComponent implements OnInit {
   hideTable:boolean = true;
   hideKewpaForm:boolean = false;
 
+  approvalStatus:string = 'FALSE';
+  statusHTML:string = 'Awaiting for approval'
+
   selectedValue1: any="";
   selectedValue2: any="";
   selectedValue3: any="";
@@ -580,38 +583,38 @@ export class KewpaComponent implements OnInit {
         .catch(error=>console.error('the error is: ', error)) 
   }
 
-  check(){
-    fetch('https://tricky-scratch-parcel.glitch.me/readcheck',{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json'
-      },
-      body:JSON.stringify(
-        {
-          ward:this.currentClient
-        }
-      )
-    })
-    .then(response => response.text())
-    .then((data)=>{
-      console.log('checkfileld', JSON.stringify(data))
-      console.log('why: ',JSON.stringify(data))
-      var status = data[3].toString();
-      if(status === 'd'){
-        console.log('Request for this month already done')
-        this.entryStatus = 'Request for this month already done. Loading data...'
-      } else {
-        //this.checkServer = false;
-        this.titlemessagge = false;
-        console.log('check()');
+  // check(){
+  //   fetch('https://tricky-scratch-parcel.glitch.me/readcheck',{
+  //     method:'POST',
+  //     headers:{
+  //       'Content-Type':'application/json'
+  //     },
+  //     body:JSON.stringify(
+  //       {
+  //         ward:this.currentClient
+  //       }
+  //     )
+  //   })
+  //   .then(response => response.text())
+  //   .then((data)=>{
+  //     console.log('checkfileld', JSON.stringify(data))
+  //     console.log('why: ',JSON.stringify(data))
+  //     var status = data[3].toString();
+  //     if(status === 'd'){
+  //       console.log('Request for this month already done')
+  //       this.entryStatus = 'Request for this month already done. Loading data...'
+  //     } else {
+  //       //this.checkServer = false;
+  //       this.titlemessagge = false;
+  //       console.log('check()');
         
-      }
-    })
-    .catch((error)=>{
-      console.error('the error is: ', error);
-      this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
-    })
-  }
+  //     }
+  //   })
+  //   .catch((error)=>{
+  //     console.error('the error is: ', error);
+  //     this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
+  //   })
+  // }
 
   checkTrue(){
     fetch('https://tricky-scratch-parcel.glitch.me/updatecheck',{
@@ -740,6 +743,11 @@ export class KewpaComponent implements OnInit {
       let colum_criteria = [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 38, 41, 44, 47, 50, 53, 56, 59, 62, 65, 68, 71, 74, 77, 80, 83];
       let description = ['BIOHAZ BAG','GEL TUBE','EDTA TUBE','GLUC TUBE','COAG TUBE','URINE CONT','PAEDS GEL', 'PAEDS FBC', 'PAEDS EDTA', 'STOOL CONT', 'SWAB - AMIES (GEL)', 'SWAB - CARRY BLAIR', 'ESR TUBE', '24 HRS URINE CONTAINER (BOX)', 'C&S AEROBIC', 'C&S ANAEROBIC', 'C&S PAEDS', 'C&S FUNGAL', 'LITHIUM HEP TUBE', 'G6PD PAPER', 'BLOOD SPOT PAPER', 'FOAM BOX', 'PARAFILM', 'BIJOUE BOTTLE', 'GLASS SLIDES', 'MICROSCOPE SLIDE', 'PLAIN TUBE + RED STOPER', 'SODIUM HEP TUBE'];
       console.log('RETURNED DATA: ', returnedData[0])
+      this.approvalStatus = returnedData[0][87]
+      console.log('approval status: ', this.approvalStatus)
+      if (this.approvalStatus == 'TRUE'){
+        this.statusHTML = 'Approved'
+      }
       colum_criteria.forEach((data, index)=>{
         console.log('the number: ', returnedData[0][data])
         console.log('the index: ', index)
@@ -751,7 +759,8 @@ export class KewpaComponent implements OnInit {
             {
               items:description[index],
               value:returnedData[0][data],
-              baki:returnedData[0][data+1]
+              baki:returnedData[0][data+1],
+              approval:returnedData[0][data+2]
             }
           )
         }
@@ -779,7 +788,8 @@ export class KewpaComponent implements OnInit {
             {
               items:item.items,
               value:item.value,
-              baki:item.baki
+              baki:item.baki,
+              approval:item.approval
             }
           )
         }
@@ -834,6 +844,9 @@ export class KewpaComponent implements OnInit {
         ctx.textAlign = "center";
         ctx.fillText(this.canvasShow[i].value,490,398+i*25);
         ctx.fillText(this.canvasShow[i].baki,700,398+i*25);
+        if(this.approvalStatus == 'TRUE'){
+          ctx.fillText(this.canvasShow[i].approval,800,398+i*25);
+        }
       }
 
       

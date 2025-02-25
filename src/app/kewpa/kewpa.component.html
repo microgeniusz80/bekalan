@@ -3,13 +3,21 @@
     <button (click)="checkTrue()" class="btn btn-danger">Make it true</button>
     <button (click)="checkFalse()" class="btn btn-danger">Make it false</button>
 </div> -->
-<div [hidden]="!titlemessagge" class="container mt-5">
+<div class="container mt-3">
+    <button (click)="logout()" class="btn btn-danger btn-block">
+        LogOut
+    </button>
+</div>
+
+<div [hidden]="!showTitleMessage" class="container mt-5">
     <h1>{{entryStatus}}</h1>
 </div>
-<div [hidden]="checkServer" class="container mt-5">
+<div [hidden]="!showEmptyForm" class="container mt-5">
     <h2>{{currentClient}}</h2>
+    
     <div class="wrap">
         <canvas class="d-flex align-items-center" #canvas width="1339" height="948"></canvas>
+        <p id="tajuk">Jumlah dipohon:</p>
         <input type="number" id="q1" [(ngModel)]="qn1"/>
         <input type="number" id="q2" [(ngModel)]="qn2"/>
         <input type="number" id="q3" [(ngModel)]="qn3"/>
@@ -36,7 +44,7 @@
         <input type="number" id="b11" [(ngModel)]="bn11"/>
         <input type="number" id="b12" [(ngModel)]="bn12"/>
 
-        <button (click)="resetBox()" class="btn btn-primary" id="button1">Send</button>
+        <button (click)="sendDataButton()" class="btn btn-primary" id="button1">Send</button>
         <!-- <button (click)="retrieveBox()" class="btn btn-primary" id="b2">Retrieve</button> -->
 
         <select [(ngModel)]="selectedValue1" (change)="onChange1($event.target)" name="cars" id="c1">
@@ -425,7 +433,7 @@
     </div>
     
 </div>
-<div [hidden]="hideTable" class="container">
+<div [hidden]="!showStockTable" class="container">
     <h2>{{currentClient}}</h2>
     <h5 >Requested Stock</h5>
     <h5 >Status: {{statusHTML}}</h5>

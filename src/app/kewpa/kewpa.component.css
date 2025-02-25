@@ -8,6 +8,7 @@
 .wrap { position:relative }
 .wrap > * { position:absolute }
 
+#tajuk { top:360px; left:547px; font-size: small;}
 #q1 { top:381px; left:450px; width:80px; height:21px }
 #q2 { top:406px; left:450px; width:80px; height:21px }
 #q3 { top:431px; left:450px; width:80px; height:21px }

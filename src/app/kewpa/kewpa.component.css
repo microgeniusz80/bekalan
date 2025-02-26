@@ -5,7 +5,10 @@
 }
 
 .wrap, .wrap canvas { width:1339px; height:948px }
-.wrap { position:relative }
+.wrap { 
+   position:relative ;
+   image-rendering: pixelated;
+}
 .wrap > * { position:absolute }
 
 #tajuk { top:150px; left:600px;}

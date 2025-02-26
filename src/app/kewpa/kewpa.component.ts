@@ -175,19 +175,51 @@ export class KewpaComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  async printCanvas(){
+  // async printCanvas(){
 
-    //var imgData = this.canvasOne.toDataURL("image/png", 1.0);
-    var imgData2 = this.canvasTwo.toDataURL("image/png", 1.0);
-    var pdf = new jsPDF('l', 'mm', [297, 210]);
-    // pdf.addImage(imgData, 'JPEG', 0,);
-    // pdf.save("download.pdf");
+  //   //var imgData = this.canvasOne.toDataURL("image/png", 1.0);
 
-    pdf.addImage(imgData2,'PNG',0, 0, 300, 210);
-    // pdf.addPage();
-    // pdf.addImage(imgData2,'PNG',7, 10, 195, 270);
-    pdf.save('bekalan_patho.pdf');
-  }
+  //   //var imgData2 = this.canvasTwo.toDataURL("image/png", 1.0); //this one
+
+  //   var imgData2 = await this.canvasTwo.toBlob(function(blob:any) {
+  //     var url = URL.createObjectURL(blob);
+  //     console.log(url); // Use this URL to download or print
+  //   }, "image/png", 1.0);
+  //   console.log('theblob',imgData2)
+  //   var pdf = new jsPDF('l', 'mm', [297, 210]);
+  //   // pdf.addImage(imgData, 'JPEG', 0,);
+  //   // pdf.save("download.pdf");
+
+  //   pdf.addImage(imgData2,'PNG',0, 0, 300, 210);
+  //   // pdf.addPage();
+  //   // pdf.addImage(imgData2,'PNG',7, 10, 195, 270);
+  //   pdf.save('bekalan_patho.pdf');
+  // }
+
+  async printCanvas() {
+    return new Promise((resolve, reject) => {
+        this.canvasTwo.toBlob((blob: Blob | null) => {
+            if (!blob) {
+                reject("Blob generation failed");
+                return;
+            }
+
+            var reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend = () => {
+                const imgData2 = reader.result as string; // Ensure it's a string
+
+                var pdf = new jsPDF('l', 'mm', [297, 210]);
+                pdf.addImage(imgData2, 'PNG', 0, 0, 300, 210);
+                pdf.save('bekalan_patho.pdf');
+                resolve("PDF Saved Successfully");
+            };
+            reader.onerror = () => reject("Error reading blob as data URL");
+        }, "image/png", 1.0);
+    });
+}
+
+
 
   async printCanvasOne(){
 

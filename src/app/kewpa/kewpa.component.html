@@ -3,7 +3,7 @@
     <button (click)="checkTrue()" class="btn btn-danger">Make it true</button>
     <button (click)="checkFalse()" class="btn btn-danger">Make it false</button>
 </div> -->
-<div class="container mt-3">
+<div [hidden]="!showLogOut" class="container mt-3">
     <button (click)="logout()" class="btn btn-danger btn-block">
         LogOut
     </button>
@@ -12,12 +12,21 @@
 <div [hidden]="!showTitleMessage" class="container mt-5">
     <h1>{{entryStatus}}</h1>
 </div>
+
+<div [hidden]="!showSendingMessage" class="container mt-5">
+    <h1>Sending data to server, please dont close this tab...</h1>
+</div>
+
+<div [hidden]="!showSuccessMessage" class="container mt-5">
+    <h1>Data is sent successfully!</h1>
+    <button class="btn btn-info btn-block" (click)="login()">Login</button>
+</div>
 <div [hidden]="!showEmptyForm" class="container mt-5">
     <h2>{{currentClient}}</h2>
     
     <div class="wrap">
         <canvas class="d-flex align-items-center" #canvas width="1339" height="948"></canvas>
-        <p id="tajuk">Jumlah dipohon:</p>
+        <!-- <p id="tajuk">Jumlah dipohon:</p> -->
         <input type="number" id="q1" [(ngModel)]="qn1"/>
         <input type="number" id="q2" [(ngModel)]="qn2"/>
         <input type="number" id="q3" [(ngModel)]="qn3"/>

@@ -20,6 +20,10 @@ export class KewpaComponent implements OnInit {
   canvasOne:any;
   canvasTwo:any;
 
+  showLogOut:boolean = true;
+  showSuccessMessage:boolean = false;
+  showSendingMessage:boolean = false;
+
   canvasShow:any = [];
   listItem:any = [];
   currentClient:string = 'none'
@@ -77,8 +81,8 @@ export class KewpaComponent implements OnInit {
   alertcontent:string='Stock detail already exist';
 
   catatanJumlah = [
-    null, null, null, null, null, null,
-    null, null, null, null, null, null
+    '0', '1', '2', '3', '4', '',
+    '', '', '', '', '', ''
   ]
 
   entry = {
@@ -147,6 +151,10 @@ export class KewpaComponent implements OnInit {
   }
 
   logout(){
+    this.router.navigate(['/']);
+  }
+
+  login(){
     this.router.navigate(['/']);
   }
 
@@ -257,11 +265,20 @@ export class KewpaComponent implements OnInit {
         ctx.font = "16px Arial";
         ctx.textAlign = "left";
 
-        console.log(this.catatanJumlah[0])
-        let nombor = ('' + this.catatanJumlah[0]).toString();
-        console.log('nombor: ',nombor);
-        ctx.fillText(nombor,215,90);
+        // console.log(this.catatanJumlah[0])
+        // let nombor = ('' + this.catatanJumlah[0]).toString();
+        // console.log('nombor: ',nombor);
+        //ctx.fillText(nombor,215,90);
         //ctx.fillText('MANJUNG, PERAK HAS AGREED TO PRIVILEGE',215,90);
+
+        // for (let i = 0; i < this.catatanJumlah.length; i++) {
+        //   //ctx.textAlign = "left";
+        //   ctx.textAlign = "center";
+        //   // ctx.fillText(this.canvasShow[i].items,220,398+i*25);
+        //   let nombor = ('' + this.catatanJumlah[i]).toString();
+        //   ctx.fillText(nombor,590,398+i*25);
+        //   // ctx.fillText(this.canvasShow[i].baki,700,398+i*25);
+        // }
 
       }
     
@@ -288,25 +305,25 @@ export class KewpaComponent implements OnInit {
       alert('Stock detail already exist')
       newValue.value = ''
     } else {
-      const foundItem = this.currentRecord.find(record => record.items === this.getOptionLabel(newValue.value));
-      if (foundItem) {
-        console.log('saving:', foundItem.value.toString())
-        this.catatanJumlah[0] = foundItem.value.toString();
-        console.log('kandungan catatny:', this.catatanJumlah)
-      } else {
-        this.catatanJumlah[0] = null;
-      }
+      //const foundItem = this.currentRecord.find(record => record.items === this.getOptionLabel(newValue.value));
+      // if (foundItem) {
+      //   console.log('saving:', foundItem.value.toString())
+      //   this.catatanJumlah[0] = foundItem.value.toString();
+      //   console.log('kandungan catatny:', this.catatanJumlah)
+      // } else {
+      //   this.catatanJumlah[0] = '';
+      // }
       //this.catatanJumlah[0] = newValue.value
       this.entry.data[0].data = newValue.value;
       if(newValue.value == ''){
         this.qn1 = null
       }
 
-      let topCanvas = this.canvasOne.offsetTop;
-      let leftCanvas = this.canvasOne.offsetLeft;
-      const ctx = this.canvasOne.getContext('2d');
+      // let topCanvas = this.canvasOne.offsetTop;
+      // let leftCanvas = this.canvasOne.offsetLeft;
+      // const ctx = this.canvasOne.getContext('2d');
 
-      this.start(ctx, topCanvas, leftCanvas, this.canvasOne);
+      // this.start(ctx, topCanvas, leftCanvas, this.canvasOne);
       //this.entry.data[0].value = this.qn1;
     }
 
@@ -981,6 +998,7 @@ export class KewpaComponent implements OnInit {
     }
   }
 
+  //MARK: actual send
   sendData(data:any[]){
 
     var kod1=0
@@ -1045,148 +1063,153 @@ export class KewpaComponent implements OnInit {
       if (item.data !== ''){
         switch(item.data){
           case 'Biohazard_bag': {
-            kod1 = item.value
+            kod1 = item.value + this.currentRecord[0].value
+            console.log('kod1: ' + kod1)
             bkod1 = item.baki
             break
           }
           case 'Gel_Tube': {
-            kod2 = item.value
+            kod2 = item.value + this.currentRecord[1].value
             bkod2 = item.baki
             break
           }
           case 'EDTA_Tube': {
-            kod3 = item.value
+            kod3 = item.value + this.currentRecord[2].value
             bkod3 = item.baki
             break
           }
           case 'Gluc_Tube': {
-            kod4 = item.value
+            kod4 = item.value + this.currentRecord[3].value
             bkod4 = item.baki
             break
           }
           case 'Coag_Tube': {
-            kod5 = item.value
+            kod5 = item.value + this.currentRecord[4].value
             bkod5 = item.baki
             break
           }
           case 'urine_container': {
-            kod6 = item.value
+            kod6 = item.value + this.currentRecord[5].value
             bkod6 = item.baki
             break
           }
           case 'Paeds_Gel': {
-            kod7 = item.value
+            kod7 = item.value + this.currentRecord[6].value
             bkod7 = item.baki
             break
           }
           case 'Paeds_FBC': {
-            kod8 = item.value
+            kod8 = item.value + this.currentRecord[7].value
             bkod8 = item.baki
             break
           }
           case 'Paeds_EDTA': {
-            kod9 = item.value
+            kod9 = item.value + this.currentRecord[8].value
             bkod9 = item.baki
             break
           }
           case 'Stool_Container': {
-            kod10 = item.value
+            kod10 = item.value + this.currentRecord[9].value
             bkod10 = item.baki
             break
           }
           case 'Swab_Amies_gel': {
-            kod11 = item.value
+            kod11 = item.value + this.currentRecord[10].value
             bkod11 = item.baki
             break
           }
           case 'Swab_Carry_Blair': {
-            kod12 = item.value
+            kod12 = item.value + this.currentRecord[11].value
             bkod12 = item.baki
             break
           }
           case 'ESR_Tube': {
-            kod13 = item.value
+            kod13 = item.value + this.currentRecord[12].value
             bkod13 = item.baki
             break
           }
           case '24h_urine_container_(BOX)': {
-            kod14 = item.value
+            kod14 = item.value + this.currentRecord[13].value
             bkod14 = item.baki
             break
           }
           case 'C&S_Aerobic': {
-            kod15 = item.value
+            kod15 = item.value + this.currentRecord[14].value
             bkod15 = item.baki
             break
           }
           case 'C&S_Anaerobic': {
-            kod16 = item.value
+            kod16 = item.value + this.currentRecord[15].value
             bkod16 = item.baki
             break
           }
           case 'C&S_Peads': {
-            kod17 = item.value
+            kod17 = item.value + this.currentRecord[16].value
             bkod17 = item.baki
             break
           }
           case 'C&S_Fungal': {
-            kod18 = item.value
+            kod18 = item.value + this.currentRecord[17].value
             bkod18 = item.baki
             break
           }
           case 'Lithium_Heparin_Tube': {
-            kod19 = item.value
+            kod19 = item.value + this.currentRecord[18].value
             bkod19 = item.baki
             break
           }
           case 'G6PD_Paper': {
-            kod20 = item.value
+            kod20 = item.value + this.currentRecord[19].value
             bkod20 = item.baki
             break
           }
           case 'Blood_Spot_Paper': {
-            kod21 = item.value
+            kod21 = item.value + this.currentRecord[20].value
             bkod21 = item.baki
             break
           }
           case 'Foam_Box': {
-            kod22 = item.value
+            kod22 = item.value + this.currentRecord[21].value
             bkod22 = item.baki
             break
           }
           case 'Parafilm': {
-            kod23 = item.value
+            kod23 = item.value + this.currentRecord[22].value
             bkod23 = item.baki
             break
           }
           case 'Bijoue_bottle': {
-            kod24 = item.value
+            kod24 = item.value + this.currentRecord[23].value
             bkod24 = item.baki
             break
           }
           case 'Glass_slides': {
-            kod25 = item.value
+            kod25 = item.value + this.currentRecord[24].value
             bkod25 = item.baki
             break
           }
           case 'Microscope_Slide': {
-            kod26 = item.value
+            kod26 = item.value + this.currentRecord[25].value
             bkod26 = item.baki
             break
           }
           case 'Plain_tube_with_red_stopper': {
-            kod27 = item.value
+            kod27 = item.value + this.currentRecord[26].value
             bkod27 = item.baki
             break
           }
           case 'Sodium_Heparin_tube': {
-            kod28 = item.value
+            kod28 = item.value + this.currentRecord[27].value
             bkod28 = item.baki
             break
           }
         }
       }
     })
+
+    this.showSendingMessage = true;
+    this.showEmptyForm = false;
+    this.showLogOut = false
 
 
     
@@ -1264,9 +1287,10 @@ export class KewpaComponent implements OnInit {
         var status = data.toString();
         if(status === 'OK'){
           this.serverReply = 'Data is sent sucessfully!'
-          alert('Data is sent succesfully!');
-          this.loadEnteredData();
-          console.log('im in here')
+          //alert('Data is sent succesfully!');
+          //this.loadEnteredData();
+          this.showSendingMessage = false;
+          this.showSuccessMessage = true;
         } else {
           this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
           alert('Something is wrong, data is not saved. Please contact Encik Sayed!');
@@ -1359,7 +1383,7 @@ export class KewpaComponent implements OnInit {
         console.log('why: ',JSON.stringify(data))
         var status = data.toString();
         if(status === 'OK'){
-          this.serverReply = 'Data is sent sucessfully!'
+          this.serverReply = 'Data is sent sucessfully bapak!'
           console.log('im in here')
         } else {
           this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'

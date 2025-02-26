@@ -20,13 +20,13 @@
 <div [hidden]="!showSuccessMessage" class="container mt-5">
     <h1>Data is sent successfully!</h1>
     <button class="btn btn-info btn-block" (click)="login()">Login</button>
+    <button style="margin-left: 20px;" class="btn btn-warning btn-block" (click)="printCanvas()">Print Request</button>
 </div>
-<div [hidden]="!showEmptyForm" class="container mt-5">
-    <h2>{{currentClient}}</h2>
+<div [hidden]="!showEmptyForm" class="container mt-n5">
     
     <div class="wrap">
-        <canvas class="d-flex align-items-center" #canvas width="1339" height="948"></canvas>
-        <!-- <p id="tajuk">Jumlah dipohon:</p> -->
+        <canvas class="d-flex align-items-center" #canvas width="1339" height="948" ></canvas>
+        <h1 id="tajuk">{{currentClient}}</h1>
         <input type="number" id="q1" [(ngModel)]="qn1"/>
         <input type="number" id="q2" [(ngModel)]="qn2"/>
         <input type="number" id="q3" [(ngModel)]="qn3"/>

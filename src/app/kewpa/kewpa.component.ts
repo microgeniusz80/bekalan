@@ -4,6 +4,7 @@ import { ViewChild, ElementRef } from '@angular/core';
 import { clippingParents } from '@popperjs/core';
 import { jsPDF } from "jspdf";
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 import { optionMapping } from './utils/constant';
 
 @Component({
@@ -15,14 +16,30 @@ export class KewpaComponent implements OnInit {
   @ViewChild('canvas',{static:true}) canvas!: ElementRef;
   @ViewChild('canvas2',{static:true}) canvas2!: ElementRef;
 
-  constructor(private router:Router){}
+  currentDate: string='';
+
+  constructor(private router:Router){
+    const datePipe = new DatePipe('en-US'); // Create an instance manually
+    this.currentDate = datePipe.transform(new Date(), 'dd-MM-yyyy') || '';
+  }
 
   canvasOne:any;
   canvasTwo:any;
 
+  topCanvas:any
+  leftCanvas:any
+  ctx:any
+
+  topCanvas2:any
+  leftCanvas2:any
+  ctx2:any
+
   showLogOut:boolean = true;
   showSuccessMessage:boolean = false;
   showSendingMessage:boolean = false;
+
+  staffname:string = '';
+  staffjawatan:string = '';
 
   canvasShow:any = [];
   listItem:any = [];
@@ -169,7 +186,21 @@ export class KewpaComponent implements OnInit {
     pdf.addImage(imgData2,'PNG',0, 0, 300, 210);
     // pdf.addPage();
     // pdf.addImage(imgData2,'PNG',7, 10, 195, 270);
-    pdf.save('hsmcp.pdf');
+    pdf.save('bekalan_patho.pdf');
+  }
+
+  async printCanvasOne(){
+
+    //var imgData = this.canvasOne.toDataURL("image/png", 1.0);
+    var imgData2 = this.canvasOne.toDataURL("image/png", 1.0);
+    var pdf = new jsPDF('l', 'mm', [297, 210]);
+    // pdf.addImage(imgData, 'JPEG', 0,);
+    // pdf.save("download.pdf");
+
+    pdf.addImage(imgData2,'PNG',0, 0, 300, 210);
+    // pdf.addPage();
+    // pdf.addImage(imgData2,'PNG',7, 10, 195, 270);
+    pdf.save('bekalan.pdf');
   }
 
 
@@ -234,11 +265,18 @@ export class KewpaComponent implements OnInit {
  //MARK: NgOnInit
   ngOnInit(): void {
     this.canvasOne = this.canvas.nativeElement;
-    let topCanvas = this.canvasOne.offsetTop;
-    let leftCanvas = this.canvasOne.offsetLeft;
-    const ctx = this.canvasOne.getContext('2d');
+    this.topCanvas = this.canvasOne.offsetTop;
+    this.leftCanvas = this.canvasOne.offsetLeft;
+    this.ctx = this.canvasOne.getContext('2d');
 
-    this.start(ctx, topCanvas, leftCanvas, this.canvasOne);
+    this.canvasTwo = this.canvas2.nativeElement;
+    this.topCanvas2 = this.canvasTwo.offsetTop;
+    this.leftCanvas2 = this.canvasTwo.offsetLeft;
+    this.ctx2 = this.canvasTwo.getContext('2d');
+
+    this.start(this.ctx, this.topCanvas, this.leftCanvas, this.canvasOne);
+
+    // this.start2(this.ctx2, this.topCanvas2, this.leftCanvas2, this.canvasTwo);
 
     console.log('active ward: ', environment.ward)
     this.currentClient = environment.ward;
@@ -264,7 +302,9 @@ export class KewpaComponent implements OnInit {
   
         ctx.font = "16px Arial";
         ctx.textAlign = "left";
-
+        ctx.fillText(this.staffname,176,791);
+        ctx.fillText(this.staffjawatan,190,814);
+        ctx.fillText(this.currentDate,178,837);
         // console.log(this.catatanJumlah[0])
         // let nombor = ('' + this.catatanJumlah[0]).toString();
         // console.log('nombor: ',nombor);
@@ -285,7 +325,15 @@ export class KewpaComponent implements OnInit {
   }
 
   getOptionLabel(value: string): string {
-    return optionMapping[value] || "Unknown option";
+    return optionMapping[value] || "";
+  }
+
+  checkNull(value:any):string {
+    if(value == null){
+      return '';
+    } else {
+      return value.toString();
+    }
   }
 
   //MARK:OnChange1
@@ -800,6 +848,10 @@ export class KewpaComponent implements OnInit {
       console.log('RETURNED DATA: ', returnedData[0])
 
       this.approvalStatus = returnedData[0][87]
+      this.staffname = returnedData[0][88]
+      this.staffjawatan = returnedData[0][89]
+
+      this.start(this.ctx, this.topCanvas, this.leftCanvas, this.canvasOne);
 
       console.log('approval status: ', this.approvalStatus)
 
@@ -821,12 +873,14 @@ export class KewpaComponent implements OnInit {
             }
           )
         }
-
-        this.entryStatus = ''
-        this.showTitleMessage = true;
-        this.showEmptyForm = true
-        this.showStockTable = false;
       })
+
+      this.entryStatus = ''
+      this.showTitleMessage = true;
+      this.showEmptyForm = true
+      this.showStockTable = false;
+
+
 
       console.log('the array contains: ', this.currentRecord)
 
@@ -941,11 +995,11 @@ export class KewpaComponent implements OnInit {
       console.log('canvasShow: ', this.canvasShow)
 
       this.canvasTwo = this.canvas2.nativeElement;
-      let topCanvas2 = this.canvasTwo.offsetTop;
-      let leftCanvas2 = this.canvasTwo.offsetLeft;
-      const ctx2 = this.canvasTwo.getContext('2d');
+      this.topCanvas2 = this.canvasTwo.offsetTop;
+      this.leftCanvas2 = this.canvasTwo.offsetLeft;
+      this.ctx2 = this.canvasTwo.getContext('2d');
 
-      this.start2(ctx2, topCanvas2, leftCanvas2, this.canvasTwo);
+      this.start2(this.ctx2, this.topCanvas2, this.leftCanvas2, this.canvasTwo);
 
       
 
@@ -980,7 +1034,7 @@ export class KewpaComponent implements OnInit {
       //   ctx.fillText('Citrate Tube',220,398);
       //   console.log('content: ' + item)
       // })
-
+      console.log('canvasshow:', this.canvasShow)
       for (let i = 0; i < this.canvasShow.length; i++) {
         ctx.textAlign = "left";
         ctx.fillText(this.canvasShow[i].items,220,398+i*25);
@@ -992,14 +1046,21 @@ export class KewpaComponent implements OnInit {
         }
       }
 
-      
+      ctx.font = "16px Arial";
+      ctx.textAlign = "left";
+      ctx.fillText(this.staffname,176,791);
+      ctx.fillText(this.staffjawatan,190,814);
+      ctx.fillText(this.currentClient,120,270);
+      ctx.fillText(this.currentDate,178,837);
+
+      // this.printCanvas();
       //ctx.fillText('MANJUNG, PERAK HAS AGREED TO PRIVILEGE',215,90);
     
     }
   }
 
   //MARK: actual send
-  sendData(data:any[]){
+  async sendData(data:any[]){
 
     var kod1=0
     var kod2=0
@@ -1206,6 +1267,26 @@ export class KewpaComponent implements OnInit {
         }
       }
     })
+
+    //canvasshow
+
+    data.forEach((item: any)=>{
+      console.log('selepas masuk:', item.value)
+      if (item.value !== 0){
+        this.canvasShow.push(
+          {
+            items:this.getOptionLabel(item.data),
+            value:this.checkNull(item.value),
+            baki:this.checkNull(item.baki),
+          }
+        )
+      }
+    });
+
+    await this.start2(this.ctx2, this.topCanvas2, this.leftCanvas2, this.canvasTwo);
+    // setTimeout(() => {
+    //   this.printCanvas()
+    // },5000)
 
     this.showSendingMessage = true;
     this.showEmptyForm = false;

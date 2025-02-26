@@ -175,27 +175,6 @@ export class KewpaComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  // async printCanvas(){
-
-  //   //var imgData = this.canvasOne.toDataURL("image/png", 1.0);
-
-  //   //var imgData2 = this.canvasTwo.toDataURL("image/png", 1.0); //this one
-
-  //   var imgData2 = await this.canvasTwo.toBlob(function(blob:any) {
-  //     var url = URL.createObjectURL(blob);
-  //     console.log(url); // Use this URL to download or print
-  //   }, "image/png", 1.0);
-  //   console.log('theblob',imgData2)
-  //   var pdf = new jsPDF('l', 'mm', [297, 210]);
-  //   // pdf.addImage(imgData, 'JPEG', 0,);
-  //   // pdf.save("download.pdf");
-
-  //   pdf.addImage(imgData2,'PNG',0, 0, 300, 210);
-  //   // pdf.addPage();
-  //   // pdf.addImage(imgData2,'PNG',7, 10, 195, 270);
-  //   pdf.save('bekalan_patho.pdf');
-  // }
-
   async printCanvas() {
     return new Promise((resolve, reject) => {
         this.canvasTwo.toBlob((blob: Blob | null) => {
@@ -217,21 +196,12 @@ export class KewpaComponent implements OnInit {
             reader.onerror = () => reject("Error reading blob as data URL");
         }, "image/png", 1.0);
     });
-}
-
-
+  }
 
   async printCanvasOne(){
-
-    //var imgData = this.canvasOne.toDataURL("image/png", 1.0);
     var imgData2 = this.canvasOne.toDataURL("image/png", 1.0);
     var pdf = new jsPDF('l', 'mm', [297, 210]);
-    // pdf.addImage(imgData, 'JPEG', 0,);
-    // pdf.save("download.pdf");
-
     pdf.addImage(imgData2,'PNG',0, 0, 300, 210);
-    // pdf.addPage();
-    // pdf.addImage(imgData2,'PNG',7, 10, 195, 270);
     pdf.save('bekalan.pdf');
   }
 
@@ -308,8 +278,6 @@ export class KewpaComponent implements OnInit {
 
     this.start(this.ctx, this.topCanvas, this.leftCanvas, this.canvasOne);
 
-    // this.start2(this.ctx2, this.topCanvas2, this.leftCanvas2, this.canvasTwo);
-
     console.log('active ward: ', environment.ward)
     this.currentClient = environment.ward;
 
@@ -321,7 +289,6 @@ export class KewpaComponent implements OnInit {
 
   retrieveBox(){
     console.log('value of: ',this.selectedValue1);
-    
   }
 
   //MARK: StartCanvas1
@@ -337,23 +304,7 @@ export class KewpaComponent implements OnInit {
         ctx.fillText(this.staffname,176,791);
         ctx.fillText(this.staffjawatan,190,814);
         ctx.fillText(this.currentDate,178,837);
-        // console.log(this.catatanJumlah[0])
-        // let nombor = ('' + this.catatanJumlah[0]).toString();
-        // console.log('nombor: ',nombor);
-        //ctx.fillText(nombor,215,90);
-        //ctx.fillText('MANJUNG, PERAK HAS AGREED TO PRIVILEGE',215,90);
-
-        // for (let i = 0; i < this.catatanJumlah.length; i++) {
-        //   //ctx.textAlign = "left";
-        //   ctx.textAlign = "center";
-        //   // ctx.fillText(this.canvasShow[i].items,220,398+i*25);
-        //   let nombor = ('' + this.catatanJumlah[i]).toString();
-        //   ctx.fillText(nombor,590,398+i*25);
-        //   // ctx.fillText(this.canvasShow[i].baki,700,398+i*25);
-        // }
-
       }
-    
   }
 
   getOptionLabel(value: string): string {
@@ -385,26 +336,10 @@ export class KewpaComponent implements OnInit {
       alert('Stock detail already exist')
       newValue.value = ''
     } else {
-      //const foundItem = this.currentRecord.find(record => record.items === this.getOptionLabel(newValue.value));
-      // if (foundItem) {
-      //   console.log('saving:', foundItem.value.toString())
-      //   this.catatanJumlah[0] = foundItem.value.toString();
-      //   console.log('kandungan catatny:', this.catatanJumlah)
-      // } else {
-      //   this.catatanJumlah[0] = '';
-      // }
-      //this.catatanJumlah[0] = newValue.value
       this.entry.data[0].data = newValue.value;
       if(newValue.value == ''){
         this.qn1 = null
       }
-
-      // let topCanvas = this.canvasOne.offsetTop;
-      // let leftCanvas = this.canvasOne.offsetLeft;
-      // const ctx = this.canvasOne.getContext('2d');
-
-      // this.start(ctx, topCanvas, leftCanvas, this.canvasOne);
-      //this.entry.data[0].value = this.qn1;
     }
 
     console.log('final data: ', this.entry.data)
@@ -433,14 +368,11 @@ export class KewpaComponent implements OnInit {
         this.qn2 = null
       }
     }
-
     console.log('final data: ', this.entry.data)
   }
 
   onChange3(newValue: any){
     var test = false
-    
-
     this.entry.data.forEach((entry, index) => {
       if(entry.data !== ''){
         if(entry.data == newValue.value){
@@ -465,8 +397,7 @@ export class KewpaComponent implements OnInit {
 
   onChange4(newValue: any){
     var test = false
-    
-
+  
     this.entry.data.forEach((entry, index) => {
       if(entry.data !== ''){
         if(entry.data == newValue.value){
@@ -485,14 +416,12 @@ export class KewpaComponent implements OnInit {
         this.qn4 = null
       }
     }
-
     console.log('final data: ', this.entry.data)
   }
 
   onChange5(newValue: any){
     var test = false
     
-
     this.entry.data.forEach((entry, index) => {
       if(entry.data !== ''){
         if(entry.data == newValue.value){
@@ -511,14 +440,11 @@ export class KewpaComponent implements OnInit {
         this.qn5 = null
       }
     }
-
     console.log('final data: ', this.entry.data)
   }
 
   onChange6(newValue: any){
     var test = false
-    
-
     this.entry.data.forEach((entry, index) => {
       if(entry.data !== ''){
         if(entry.data == newValue.value){
@@ -543,8 +469,6 @@ export class KewpaComponent implements OnInit {
 
   onChange7(newValue: any){
     var test = false
-    
-
     this.entry.data.forEach((entry, index) => {
       if(entry.data !== ''){
         if(entry.data == newValue.value){
@@ -569,8 +493,6 @@ export class KewpaComponent implements OnInit {
 
   onChange8(newValue: any){
     var test = false
-    
-
     this.entry.data.forEach((entry, index) => {
       if(entry.data !== ''){
         if(entry.data == newValue.value){
@@ -595,8 +517,6 @@ export class KewpaComponent implements OnInit {
 
   onChange9(newValue: any){
     var test = false
-    
-
     this.entry.data.forEach((entry, index) => {
       if(entry.data !== ''){
         if(entry.data == newValue.value){
@@ -621,8 +541,6 @@ export class KewpaComponent implements OnInit {
 
   onChange10(newValue: any){
     var test = false
-    
-
     this.entry.data.forEach((entry, index) => {
       if(entry.data !== ''){
         if(entry.data == newValue.value){
@@ -647,8 +565,6 @@ export class KewpaComponent implements OnInit {
 
   onChange11(newValue: any){
     var test = false
-    
-
     this.entry.data.forEach((entry, index) => {
       if(entry.data !== ''){
         if(entry.data == newValue.value){
@@ -673,8 +589,6 @@ export class KewpaComponent implements OnInit {
 
   onChange12(newValue: any){
     var test = false
-    
-
     this.entry.data.forEach((entry, index) => {
       if(entry.data !== ''){
         if(entry.data == newValue.value){
@@ -710,47 +624,11 @@ export class KewpaComponent implements OnInit {
           console.log('server reply from kewpa page: ',data)
           if(data == 'server is up!'){
             clearInterval(this.interval);
-            //this.checkAlreadyFilled();
             this.populateDataFromServer();
-            // this.showEmptyForm = true;
-            // this.showTitleMessage = false;
           }
         })
         .catch(error=>console.error('the error is: ', error)) 
   }
-
-  // check(){
-  //   fetch('https://tricky-scratch-parcel.glitch.me/readcheck',{
-  //     method:'POST',
-  //     headers:{
-  //       'Content-Type':'application/json'
-  //     },
-  //     body:JSON.stringify(
-  //       {
-  //         ward:this.currentClient
-  //       }
-  //     )
-  //   })
-  //   .then(response => response.text())
-  //   .then((data)=>{
-  //     console.log('checkfileld', JSON.stringify(data))
-  //     console.log('why: ',JSON.stringify(data))
-  //     var status = data[3].toString();
-  //     if(status === 'd'){
-  //       console.log('Request for this month already done')
-  //       this.entryStatus = 'Request for this month already done. Loading data...'
-  //     } else {
-  //       //this.checkServer = false;
-  //       this.titlemessagge = false;
-  //       console.log('check()');
-        
-  //     }
-  //   })
-  //   .catch((error)=>{
-  //     console.error('the error is: ', error);
-  //     this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
-  //   })
-  // }
 
   checkTrue(){
     fetch('https://tricky-scratch-parcel.glitch.me/updatecheck',{
@@ -869,8 +747,6 @@ export class KewpaComponent implements OnInit {
     })
     .then(response => response.text())
     .then((data)=>{
-      // console.log('original response', data)
-      // console.log('parsing: ', (JSON.parse(data))[0][0])
       const returnedData = JSON.parse(data);
       console.log('the length: ', returnedData[0].length)
 
@@ -892,8 +768,6 @@ export class KewpaComponent implements OnInit {
       }
 
       column_criteria.forEach((data, index)=>{
-        // console.log('the number: ', returnedData[0][data])
-        // console.log('the index: ', index)
         if(returnedData[0][data] == '' || returnedData[0][data] == null){
         } else {
           this.currentRecord.push(
@@ -912,35 +786,8 @@ export class KewpaComponent implements OnInit {
       this.showEmptyForm = true
       this.showStockTable = false;
 
-
-
       console.log('the array contains: ', this.currentRecord)
 
-      // this.currentRecord.forEach((item: any)=>{
-      //   if (item.value !== 0){
-      //     this.canvasShow.push(
-      //       {
-      //         items:item.items,
-      //         value:item.value,
-      //         baki:item.baki,
-      //         approval:item.approval
-      //       }
-      //     )
-      //   }
-      // });
-
-      // console.log('canvasShow: ', this.canvasShow)
-
-      // this.canvasTwo = this.canvas2.nativeElement;
-      // let topCanvas2 = this.canvasTwo.offsetTop;
-      // let leftCanvas2 = this.canvasTwo.offsetLeft;
-      // const ctx2 = this.canvasTwo.getContext('2d');
-
-      // this.start2(ctx2, topCanvas2, leftCanvas2, this.canvasTwo);
-
-      // for (let i = 0; i < returnedData[0].length; i++) {
-      //   console.log('cell data: ',returnedData[0][i]);
-      // }
     })
     .catch((error)=>{
       console.error('the error is: ', error);
@@ -993,15 +840,7 @@ export class KewpaComponent implements OnInit {
             }
           )
         }
-
-
         this.entryStatus = ''
-        
-        // this.currentRecord.foreach((item: any)=>{
-        //   console.log('dalam current record buang kosong',item)
-        // })
-
-       
         this.showTitleMessage = true;
         this.showEmptyForm = true
         this.showStockTable = false;
@@ -1033,19 +872,9 @@ export class KewpaComponent implements OnInit {
 
       this.start2(this.ctx2, this.topCanvas2, this.leftCanvas2, this.canvasTwo);
 
-      
-
-
       for (let i = 0; i < returnedData[0].length; i++) {
         console.log('cell data: ',returnedData[0][i]);
       }
-      // if(status === 'd'){
-      //   console.log('Request for this month already done')
-      //   this.entryStatus = 'Request for this month already done. Loading data...'
-      //   this.loadEnteredData();
-      // } else {
-      //   this.checkServer = false;
-      // }
     })
     .catch((error)=>{
       console.error('the error is: ', error);
@@ -1062,10 +891,6 @@ export class KewpaComponent implements OnInit {
       ctx.font = "16px Arial";
       ctx.textAlign = "left";
 
-      // this.canvasShow.forEach((item: any) => {
-      //   ctx.fillText('Citrate Tube',220,398);
-      //   console.log('content: ' + item)
-      // })
       console.log('canvasshow:', this.canvasShow)
       for (let i = 0; i < this.canvasShow.length; i++) {
         ctx.textAlign = "left";
@@ -1085,9 +910,6 @@ export class KewpaComponent implements OnInit {
       ctx.fillText(this.currentClient,120,270);
       ctx.fillText(this.currentDate,178,837);
 
-      // this.printCanvas();
-      //ctx.fillText('MANJUNG, PERAK HAS AGREED TO PRIVILEGE',215,90);
-    
     }
   }
 
@@ -1300,8 +1122,6 @@ export class KewpaComponent implements OnInit {
       }
     })
 
-    //canvasshow
-
     data.forEach((item: any)=>{
       console.log('selepas masuk:', item.value)
       if (item.value !== 0){
@@ -1316,106 +1136,98 @@ export class KewpaComponent implements OnInit {
     });
 
     await this.start2(this.ctx2, this.topCanvas2, this.leftCanvas2, this.canvasTwo);
-    // setTimeout(() => {
-    //   this.printCanvas()
-    // },5000)
 
     this.showSendingMessage = true;
     this.showEmptyForm = false;
     this.showLogOut = false
 
-
-    
-      fetch('https://tricky-scratch-parcel.glitch.me',{
-        method:'POST',
-        headers:{
-          'Content-Type':'application/json'
-        },
-        body:JSON.stringify(
-          {
-            num1:kod1, 
-            num2:kod2,
-            num3:kod3,
-            num4:kod4,
-            num5:kod5,
-            num6:kod6,
-            num7:kod7,
-            num8:kod8,
-            num9:kod9,
-            num10:kod10,
-            num11:kod11,
-            num12:kod12,
-            num13:kod13,
-            num14:kod14,
-            num15:kod15,
-            num16:kod16,
-            num17:kod17,
-            num18:kod18,
-            num19:kod19,
-            num20:kod20,
-            num21:kod21,
-            num22:kod22,
-            num23:kod23,
-            num24:kod24,
-            num25:kod25,
-            num26:kod26,
-            num27:kod27,
-            num28:kod28,
-            bnum1:bkod1, 
-            bnum2:bkod2,
-            bnum3:bkod3,
-            bnum4:bkod4,
-            bnum5:bkod5,
-            bnum6:bkod6,
-            bnum7:bkod7,
-            bnum8:bkod8,
-            bnum9:bkod9,
-            bnum10:bkod10,
-            bnum11:bkod11,
-            bnum12:bkod12,
-            bnum13:bkod13,
-            bnum14:bkod14,
-            bnum15:bkod15,
-            bnum16:bkod16,
-            bnum17:bkod17,
-            bnum18:bkod18,
-            bnum19:bkod19,
-            bnum20:bkod20,
-            bnum21:bkod21,
-            bnum22:bkod22,
-            bnum23:bkod23,
-            bnum24:bkod24,
-            bnum25:bkod25,
-            bnum26:bkod26,
-            bnum27:bkod27,
-            bnum28:bkod28,
-            ward:this.currentClient
-          }
-        )
-      })
-      .then(response => response.text())
-      .then((data)=>{
-        console.log('the data is', JSON.stringify(data))
-        console.log('why: ',JSON.stringify(data))
-        var status = data.toString();
-        if(status === 'OK'){
-          this.serverReply = 'Data is sent sucessfully!'
-          //alert('Data is sent succesfully!');
-          //this.loadEnteredData();
-          this.showSendingMessage = false;
-          this.showSuccessMessage = true;
-        } else {
-          this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
-          alert('Something is wrong, data is not saved. Please contact Encik Sayed!');
+    fetch('https://tricky-scratch-parcel.glitch.me',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body:JSON.stringify(
+        {
+          num1:kod1, 
+          num2:kod2,
+          num3:kod3,
+          num4:kod4,
+          num5:kod5,
+          num6:kod6,
+          num7:kod7,
+          num8:kod8,
+          num9:kod9,
+          num10:kod10,
+          num11:kod11,
+          num12:kod12,
+          num13:kod13,
+          num14:kod14,
+          num15:kod15,
+          num16:kod16,
+          num17:kod17,
+          num18:kod18,
+          num19:kod19,
+          num20:kod20,
+          num21:kod21,
+          num22:kod22,
+          num23:kod23,
+          num24:kod24,
+          num25:kod25,
+          num26:kod26,
+          num27:kod27,
+          num28:kod28,
+          bnum1:bkod1, 
+          bnum2:bkod2,
+          bnum3:bkod3,
+          bnum4:bkod4,
+          bnum5:bkod5,
+          bnum6:bkod6,
+          bnum7:bkod7,
+          bnum8:bkod8,
+          bnum9:bkod9,
+          bnum10:bkod10,
+          bnum11:bkod11,
+          bnum12:bkod12,
+          bnum13:bkod13,
+          bnum14:bkod14,
+          bnum15:bkod15,
+          bnum16:bkod16,
+          bnum17:bkod17,
+          bnum18:bkod18,
+          bnum19:bkod19,
+          bnum20:bkod20,
+          bnum21:bkod21,
+          bnum22:bkod22,
+          bnum23:bkod23,
+          bnum24:bkod24,
+          bnum25:bkod25,
+          bnum26:bkod26,
+          bnum27:bkod27,
+          bnum28:bkod28,
+          ward:this.currentClient
         }
-        console.log('after: ', status)
-      })
-      .catch((error)=>{
-        console.error('the error is: ', error);
+      )
+    })
+    .then(response => response.text())
+    .then((data)=>{
+      console.log('the data is', JSON.stringify(data))
+      console.log('why: ',JSON.stringify(data))
+      var status = data.toString();
+      if(status === 'OK'){
+        this.serverReply = 'Data is sent sucessfully!'
+        this.showSendingMessage = false;
+        this.showSuccessMessage = true;
+      } else {
         this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
         alert('Something is wrong, data is not saved. Please contact Encik Sayed!');
-      })
-    
+      }
+      console.log('after: ', status)
+    })
+    .catch((error)=>{
+      console.error('the error is: ', error);
+      this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
+      alert('Something is wrong, data is not saved. Please contact Encik Sayed!');
+    })
   }
 
   addItem(
@@ -1448,7 +1260,6 @@ export class KewpaComponent implements OnInit {
     kod27:any,
     kod28:any,
   ){
-    //this.listItem.push(kod)
     console.log(this.listItem)
     
       fetch('https://tricky-scratch-parcel.glitch.me',{
@@ -1507,7 +1318,5 @@ export class KewpaComponent implements OnInit {
         console.error('the error is: ', error);
         this.serverReply = 'Something is wrong, data is not saved. Please contact Encik Sayed!'
       })
-    
   }
-
 }

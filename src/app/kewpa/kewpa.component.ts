@@ -304,6 +304,9 @@ export class KewpaComponent implements OnInit {
         ctx.fillText(this.staffname,176,791);
         ctx.fillText(this.staffjawatan,190,814);
         ctx.fillText(this.currentDate,178,837);
+        ctx.font = "14px Arial";
+        ctx.fillText('(baki stok)',562,374);
+        ctx.font = "16px Arial";
       }
   }
 
@@ -897,7 +900,7 @@ export class KewpaComponent implements OnInit {
         ctx.fillText(this.canvasShow[i].items,220,398+i*25);
         ctx.textAlign = "center";
         ctx.fillText(this.canvasShow[i].value,490,398+i*25);
-        ctx.fillText(this.canvasShow[i].baki,700,398+i*25);
+        ctx.fillText(this.canvasShow[i].baki,590,398+i*25);
         if(this.approvalStatus == 'TRUE'){
           ctx.fillText(this.canvasShow[i].approval,800,398+i*25);
         }
@@ -909,6 +912,9 @@ export class KewpaComponent implements OnInit {
       ctx.fillText(this.staffjawatan,190,814);
       ctx.fillText(this.currentClient,120,270);
       ctx.fillText(this.currentDate,178,837);
+      ctx.font = "14px Arial";
+        ctx.fillText('(baki stok)',562,374);
+        ctx.font = "16px Arial";
 
     }
   }
